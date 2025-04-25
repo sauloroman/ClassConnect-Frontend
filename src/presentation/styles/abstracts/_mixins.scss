@@ -1,0 +1,27 @@
+@mixin grid( $cols, $gap, $center: false ) {
+  display: grid;
+  grid-template-columns: repeat( $cols, 1fr );
+  gap: $gap;
+
+  @if $center == true {
+    place-items: center;
+  }
+}
+
+@mixin createButton( $bgColor, $textColor, $type: "outline" ) {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background-color: $bgColor;
+  color: $textColor;
+  border: 2px solid $textColor;
+  transition: all .4s ease;
+  font-weight: bold;
+
+  @if $type == "outline" {
+    &:hover {
+      border-color: $bgColor;
+      color: $bgColor;
+      background-color: #fff;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use '../../styles/abstracts/variables' as v;
+
+.login {
+  &__forgot-password {
+    cursor: pointer;
+    transition: all .4s ease;
+  }
+  
+  &__forgot-password:hover {
+    color: v.$color-text;
+  }
+}

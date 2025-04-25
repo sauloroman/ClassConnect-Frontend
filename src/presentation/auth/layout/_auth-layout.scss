@@ -1,0 +1,70 @@
+@use '../../styles/abstracts/variables' as v;
+@use '../../styles/abstracts/mixins' as m;
+
+.auth-layout {
+
+  &__grid {
+    @include m.grid(2, v.$gutter);
+  }
+  
+  &__content {
+    height: 100vh;
+    padding: v.$gutter calc( v.$gutter * 3 );
+  }
+
+  &__logo-box {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: calc( v.$gutter * 1.5 );
+  }
+
+  &__logo {
+    width: 7rem;
+  }
+
+  &__name {
+    font-weight: 900;
+
+    span {
+      color: v.$color-tertiary;
+    }
+  }
+
+  &__header {
+    margin-bottom: v.$gutter;
+  }
+
+  &__text {
+    color: v.$color-gray-dark;
+  }
+
+  &__slider {
+    border: 1px solid v.$color-primary;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  &__children {
+    width: 90%;
+  }
+
+  &__bottom {
+    margin-top: v.$gutter;
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: v.$color-tertiary;
+      font-weight: 400;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      transition: all .4s ease;
+    }
+
+    a:hover {
+      font-weight: bold;
+    }
+  }
+
+}

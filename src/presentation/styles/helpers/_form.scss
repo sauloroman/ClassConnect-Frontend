@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.form {
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid v.$border-color;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: v.$color-background;
+  }
+
+  &__field-password {
+    input { border: none; }
+    display: flex;
+    align-items: center;
+    border: 1px solid v.$border-color;
+    border-radius: 5px;
+    padding-right: 1rem;
+  }
+
+  &__icon {
+    cursor: pointer;
+    font-size: 2rem;
+    color: v.$color-gray-dark;
+  }
+
+  &__forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    p {
+      color: v.$color-gray-dark;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.form-button__submit {
+  width: 100%;
+  @include m.createButton( v.$color-tertiary, v.$color-background, 'outline');
+}
