@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as v;
 
 .u-text-wrong {
-  color: v.$color-error;
+  color: v.$color-icon-error;
 }
 
 .u-animate-moveToLeft {
@@ -11,3 +11,11 @@
 .u-animate-moveToRight {
   animation: moveToRight 2s ease;
 }
+
+.u-h-20 {
+  height: 20rem;
+}
+
+.u-py-10 {
+  padding: 10rem 0;
+} 

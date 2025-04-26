@@ -4,6 +4,11 @@ export enum Roles {
   STUDENT = 'student'
 }
 
+export enum AuthStatus {
+  AUTHENTICATED = 'authenticated',
+  UNAUTHENTICATED = 'unauthenticated'
+}
+
 export interface UserEntity {
   id: string;
   firstName: string;

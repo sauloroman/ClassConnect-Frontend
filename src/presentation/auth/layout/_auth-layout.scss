@@ -2,13 +2,12 @@
 @use '../../styles/abstracts/mixins' as m;
 
 .auth-layout {
-
+  
   &__grid {
     @include m.grid(2, v.$gutter);
   }
-
+  
   &__content-box {
-    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -24,7 +23,7 @@
     padding: v.$gutter calc( v.$gutter * 3 );
 
     @include m.responsiveDesign("laptop") {
-      padding: v.$gutter;
+      padding: calc( v.$gutter * 2 ) v.$gutter;
     }
   }
 
@@ -81,7 +80,9 @@
 
 .auth-layout-slider {
   height: 100%;
+  min-height: 100vh;
   border: 1px solid v.$color-primary;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, .15);
 }

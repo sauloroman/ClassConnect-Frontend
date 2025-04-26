@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { getEnvVariables } from '../../presentation/shared/helpers'
 
-const { BASE_URL } = getEnvVariables()
+const { VITE_BACKEND_URL } = getEnvVariables()
 
 export const classconnectApiPublic = axios.create({
-  baseURL: BASE_URL,
+  baseURL: VITE_BACKEND_URL,
   timeout: 6000,
 })
 
 export const classconnectApiPrivate = axios.create({
-  baseURL: BASE_URL,
+  baseURL: VITE_BACKEND_URL,
   timeout: 6000,
 })
 

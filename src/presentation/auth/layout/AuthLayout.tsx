@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import logo from '../../assets/img/logo-background-white.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../application/hooks';
+import { LoadingSpinner } from '../../shared/components';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -29,6 +31,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
     ? 'u-animate-moveToLeft'
     : 'u-animate-moveToRight'
   }, [pageName])
+  const { isLoading } = useAuth()
 
   return (
     <div className="auth-layout">
@@ -54,12 +57,24 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
               <p className="auth-layout__text">{text}</p>
             </header>
 
-            <div className="auth-layout__children">{children}</div>
+            {
+              isLoading
+              ? (
+                <div className='u-py-10'>
+                  <LoadingSpinner />
+                </div>
+              )
+              : (
+                <div className="auth-layout__children">
+                  {children}
+                  <p className="auth-layout__bottom">
+                    {textNavigate}
+                    <Link to={link}>{textLink}</Link>
+                  </p>
+                </div>
+              )
+            }
 
-            <p className="auth-layout__bottom">
-              {textNavigate}
-              <Link to={link}>{textLink}</Link>
-            </p>
           </section>
         </div>
 

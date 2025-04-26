@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RegisterAccountDto } from '../../../domain/dto';
 import { Roles } from '../../../domain/entities';
+import { useAuth } from '../../../application/hooks';
+
+import { FormValidations, useForm, useValidatePassword } from '../../hooks';
 import { AuthLayout } from '../layout/AuthLayout';
 import { InputPassword } from '../../shared/components';
-import { FormValidations, useForm } from '../../hooks';
 import { regularExp } from '../../shared/utils';
 import { isPasswordValid } from '../../shared/helpers';
 
@@ -51,7 +53,6 @@ export const AuthRegister: React.FC = () => {
     password,
     passwordValid,
     confirmPassword,
-    confirmPasswordValid,
     role,
     roleValid,
     isFormValid,
@@ -60,16 +61,18 @@ export const AuthRegister: React.FC = () => {
     onResetForm,
   } = useForm(formData, formValidations);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (confirmPassword !== password) {
-      console.log('La contraseña no coincide');
-    }
-  }, [confirmPassword]);
+  const { errorDifferentPasswords } = useValidatePassword( password, confirmPassword )
+  const { registerAccount, isLoading } = useAuth()
 
   const onRegisterAccount = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
+
+    if ( !isFormValid || errorDifferentPasswords !== '' ) return
+
+    const { confirmPassword, ...restFormState } = formState
+    registerAccount( restFormState )
+    onResetForm()
   };
 
   return (
@@ -125,8 +128,9 @@ export const AuthRegister: React.FC = () => {
                 name="role"
                 value={role}
                 onChange={onInputChange}
+                defaultValue={''}
               >
-                <option selected value=""></option>
+                <option value=""></option>
                 <option value={Roles.TEACHER}>Instructor</option>
                 <option value={Roles.ADMIN}>Estudiante</option>
               </select>
@@ -170,21 +174,25 @@ export const AuthRegister: React.FC = () => {
                 placeholder="Repite tu contraseña"
               />
             </div>
-            <span
-              className={`form__span form__span--left ${
-                !isFormValid && formSubmitted ? 'u-text-wrong' : null
-              }`}
-            >
-              {passwordValid?.split('.').map((condition) => (
-                <>
-                  <span>{condition}</span>
-                  <br />
-                </>
-              ))}
-            </span>
+            <div className="flex flex-between">
+              <span
+                className={`form__span form__span--left ${
+                  !isFormValid && formSubmitted ? 'u-text-wrong' : null
+                }`}
+              >
+                {passwordValid?.split('.').map((condition) => (
+                  <div key={condition}>
+                    <span>{condition}</span>
+                    <br />
+                  </div>
+                ))}
+              </span>
+              <span className='form__span'>{errorDifferentPasswords}</span>
+            </div>
+
           </div>
           <div className="form__buttons">
-            <button type="submit" className="form-button__submit">
+            <button disabled={ isLoading } type="submit" className="form-button__submit">
               Registrar Cuenta
             </button>
           </div>

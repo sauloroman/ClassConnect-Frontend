@@ -1,0 +1,91 @@
+@use '../abstracts/variables' as v;
+
+.alert {
+
+  position: fixed;
+  z-index: v.$z-index-alert;
+  border: 1px solid v.$border-color;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  width: 45rem;
+  font-size: 1.4rem;
+  bottom: 5%;
+  right: -100%;
+  transition: all .4s ease;
+  
+  &--open {
+    right: 3%;
+  }
+  
+  &--close {
+    right: -100%;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &--success {
+    background-color: v.$color-success;
+  }
+
+  &--error {
+    background-color: v.$color-error;
+  }
+
+  &--info {
+    background-color: v.$color-info;
+  }
+
+  &__icon {
+    font-size: 3rem;
+  }
+
+  &__icon--info {
+    color: v.$color-icon-info;
+  }
+
+  &__icon--success {
+    color: v.$color-icon-success;
+  }
+
+  &__icon--error {
+    color: v.$color-icon-error;
+  }
+
+  &__content {
+    padding: .5rem 0;
+  }
+
+  &__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  &__title--info, &__message--info {
+    color: v.$color-text-info; 
+  }
+
+  &__title--error, &__message--error {
+    color: v.$color-text-error; 
+  }
+
+  &__title--success, &__message--success {
+    color: v.$color-text-success; 
+  }
+
+  &__close-box {
+    align-self: flex-start;
+  }
+
+  &__close {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
+}

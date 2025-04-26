@@ -11,7 +11,18 @@ $color-gray-light-2: #eeeeee;
 $color-gray-dark: #777777;
 $color-gray-dark-2: #999999;
 
-$color-error: #fa5252;
+$color-error: #FBE9E9;
+$color-text-error: #4F3333;
+$color-icon-error: #930F0E;
+
+$color-info: #F8F9FD;
+$color-text-info: #040608;
+$color-icon-info: #194FA8;
+
+$color-success: #EAF2EB;
+$color-text-success: #343F34;
+$color-icon-success: #295F2B;
+
 $color-orange: #ffa94d;
 
 $color-text: #333333;
@@ -23,3 +34,5 @@ $border-color: #ddd;
 $default-font-size: 1.4rem;
 
 $gutter: 5rem;
+
+$z-index-alert: 99999;

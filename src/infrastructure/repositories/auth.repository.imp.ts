@@ -4,9 +4,9 @@ import { classconnectApiPublic } from "../api/classconnect.api";
 
 export class ClassConnectAPIAuthRepository implements AuthRepository {
 
-  async registerAccount(registerAccountDto: RegisterAccountDto): Promise<RegisterAccountResponse> {
+  async registerAccount(registerAccountDto: Partial<RegisterAccountDto>): Promise<RegisterAccountResponse> {
     const { data } = await classconnectApiPublic.post<RegisterAccountResponse>(
-      '/auth/users', 
+      '/users', 
       registerAccountDto 
     )
     return data

@@ -13,13 +13,13 @@ export class AuthService {
     this.authRepo = authRepo
   }
 
-  async registerAccount( registerAccountDto: RegisterAccountDto ): Promise<RegisterAccountResponse | unknown> {
+  async registerAccount( registerAccountDto: Partial<RegisterAccountDto> ): Promise<RegisterAccountResponse> {
     try {
       const data = await this.authRepo.registerAccount( registerAccountDto )
       return data 
-    } catch (error) {
-      console.log(error)
-      return error
+    } catch (error: any) {
+      const errorMessage = error.response?.data.error ?? 'Error al registrar la cuenta'
+      throw errorMessage
     }
   }
 
