@@ -13,11 +13,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include m.responsiveDesign("laptop") {
+      height: auto;
+    }
   }
   
   &__content {
     width: 90%;
     padding: v.$gutter calc( v.$gutter * 3 );
+
+    @include m.responsiveDesign("laptop") {
+      padding: v.$gutter;
+    }
   }
 
   &__logo-box {
@@ -72,6 +80,7 @@
 }
 
 .auth-layout-slider {
+  height: 100%;
   border: 1px solid v.$color-primary;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;

@@ -6,7 +6,7 @@ export const ClassConnectRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='auth/*' element={ <AuthRouter /> } />
+        <Route path='classconnect/auth/*' element={ <AuthRouter /> } />
       </Routes>
     </BrowserRouter>
   )

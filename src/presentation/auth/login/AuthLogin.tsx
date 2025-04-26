@@ -42,7 +42,7 @@ export const AuthLogin: React.FC = () => {
       text='Hey, te damos la bienvenida a tu espacio especial'
       textNavigate='¿No tienes una cuenta?'
       textLink='Crea una'
-      link='/auth/register'
+      link='/classconnect/auth/register'
     >
       <>
         <form onSubmit={ onLoginAccount } className="form login__form">

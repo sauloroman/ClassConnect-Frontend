@@ -27,3 +27,13 @@
     }
   }
 }
+
+@mixin responsiveDesign( $breakingPoint: "phone" ) {
+
+  @if $breakingPoint == "laptop" {
+    @media ( min-width: 1200px ) {
+      @content;
+    }
+  }
+
+}

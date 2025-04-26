@@ -80,7 +80,7 @@ export const AuthRegister: React.FC = () => {
       text="Crea una cuenta y comienza uniéndote a tus clases."
       textNavigate="¿Ya tienes una cuenta?"
       textLink="Inicia sesión"
-      link="/auth/login"
+      link="/classconnect/auth/login"
     >
       <div className="register">
         <form onSubmit={onRegisterAccount} className="form login__form">
