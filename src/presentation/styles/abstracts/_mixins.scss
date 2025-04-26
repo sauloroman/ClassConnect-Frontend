@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as v;
+
 @mixin grid( $cols, $gap, $center: false ) {
   display: grid;
   grid-template-columns: repeat( $cols, 1fr );
@@ -21,7 +23,7 @@
     &:hover {
       border-color: $bgColor;
       color: $bgColor;
-      background-color: #fff;
+      background-color: v.$color-background;
     }
   }
 }

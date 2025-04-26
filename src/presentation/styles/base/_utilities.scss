@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as v;
+
+.u-text-wrong {
+  color: v.$color-error;
+}
+
+.u-animate-moveToLeft {
+  animation: moveToLeft 2s ease;
+}
+
+.u-animate-moveToRight {
+  animation: moveToRight 2s ease;
+}

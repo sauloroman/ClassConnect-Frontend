@@ -6,7 +6,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem;
     margin-bottom: 4rem;
   }
 
@@ -25,6 +25,7 @@
     border: 1px solid v.$border-color;
     border-radius: 5px;
     padding-right: 1rem;
+    width: 100%;
   }
 
   &__icon {
@@ -33,9 +34,9 @@
     color: v.$color-gray-dark;
   }
 
-  &__forgot-password {
+  &__forgot-password-box {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 
     p {
@@ -43,9 +44,35 @@
     }
   }
 
+  &__forgot-password {
+    cursor: pointer;
+    transition: all .4s ease;
+  }
+  
+  &__forgot-password:hover {
+    color: v.$color-text;
+  }
+
+  &__passwords {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+  }
+
   &__buttons {
     display: flex;
     gap: 2rem;
+  }
+
+  &__span {
+    display: block;
+    text-align: right;
+    font-size: 1.2rem;
+    color: v.$color-orange;
+
+    &--left {
+      text-align: left;
+    }
   }
 }
 
