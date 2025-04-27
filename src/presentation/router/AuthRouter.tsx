@@ -16,7 +16,7 @@ export const AuthRouter: React.FC = () => {
       <Route path='forgot-password' element={<AuthForgotPassword />} />
       <Route path='recover-password' element={<AuthRecoverPassword />} />
       <Route path='validate-account' element={<AuthValidateAccount />} />
-      <Route path="/*" element={<Navigate to={'/auth/login'} />} />
+      <Route path="/*" element={<Navigate to={'/classconnect/auth/login'} />} />
     </Routes>
   )
 }

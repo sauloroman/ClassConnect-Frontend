@@ -48,6 +48,10 @@ export const authSlice = createSlice({
 
     newValidationCode: ( state ) => {
       state.validateAccount.newValidationCode = true
+    },
+
+    resetValidationCode: ( state ) => {
+      state.validateAccount.newValidationCode = false
     }
 
   }
@@ -58,4 +62,5 @@ export const {
   setIsLoadingAuth,
   setTempUser,
   newValidationCode,
+  resetValidationCode
 } = authSlice.actions

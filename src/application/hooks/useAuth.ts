@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
 import { LoginAccountDto, RegisterAccountDto, ValidateAccountDto } from "../../domain/dto"
-import { startLoginingAccount, startRegisteringAccount, startValidatingAccount } from "../state/auth/auth.thunk"
+import { startLoginingAccount, startRegisteringAccount, startResendingVerificationCode, startValidatingAccount } from "../state/auth/auth.thunk"
 import { setTempUser } from "../state/auth/auth.slice"
 
 export const useAuth = () => {
@@ -23,6 +23,10 @@ export const useAuth = () => {
     dispatch( startValidatingAccount(validateAccountDto) )
   }
 
+  const resentValidationCode = ( email: string ) => {
+    dispatch( startResendingVerificationCode( email ) )
+  }
+
   return {
     isLoading,
     msg,
@@ -35,6 +39,7 @@ export const useAuth = () => {
     registerAccount,
     stablishTempUser,
     validateAccount,
+    resentValidationCode,
   }
 
 }

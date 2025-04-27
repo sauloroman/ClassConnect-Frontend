@@ -31,3 +31,8 @@ export interface ValidateAccountDto {
   email: string;
   code: string;
 }
+
+export interface NewValidationCodeReponse {
+  ok: boolean,
+  msg: string,
+}

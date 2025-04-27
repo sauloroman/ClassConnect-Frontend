@@ -1,6 +1,7 @@
 import { 
   LoginAccountDto, 
   LoginAccountResponse, 
+  NewValidationCodeReponse, 
   RegisterAccountDto, 
   RegisterAccountResponse, 
   ValidateAccountDto 
@@ -30,6 +31,14 @@ export class ClassConnectAPIAuthRepository implements AuthRepository {
     const { data } = await classconnectApiPublic.post<LoginAccountResponse>(
       'auth/validate-account',
       validateAccountDto
+    )
+    return data
+  }
+
+  async resendValidationCode(email: string): Promise<NewValidationCodeReponse> {
+    const { data } = await classconnectApiPublic.post<NewValidationCodeReponse>(
+      '/auth/resend-verification-code',
+      { email }
     )
     return data
   }

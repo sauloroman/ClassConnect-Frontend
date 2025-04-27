@@ -1,6 +1,7 @@
 import { 
   LoginAccountDto, 
   LoginAccountResponse, 
+  NewValidationCodeReponse, 
   RegisterAccountDto, 
   RegisterAccountResponse, 
   ValidateAccountDto
@@ -42,6 +43,16 @@ export class AuthService {
   async validateAccount( validateAccountDto: ValidateAccountDto ): Promise<LoginAccountResponse> {
     try {
       const data = await this.authRepo.validateAccount( validateAccountDto )
+      return data
+    } catch (error: any) {
+      const errorMessage = error.response?.data.error ?? 'No se ha podido validar la cuenta'
+      throw errorMessage
+    }
+  }
+
+  async resendVerificationCode( email: string ): Promise<NewValidationCodeReponse> {
+    try {
+      const data = await this.authRepo.resendValidationCode( email )
       return data
     } catch (error: any) {
       const errorMessage = error.response?.data.error ?? 'No se ha podido validar la cuenta'
