@@ -26,3 +26,8 @@ export interface LoginAccountResponse {
   user: UserEntity;
   token: string;
 }
+
+export interface ValidateAccountDto {
+  email: string;
+  code: string;
+}

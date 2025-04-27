@@ -80,3 +80,8 @@
   width: 100%;
   @include m.createButton( v.$color-tertiary, v.$color-background, 'outline');
 }
+
+.form-button__outlined {
+  width: 100%;
+  @include m.createButton( v.$color-gray-dark, v.$color-background )
+}

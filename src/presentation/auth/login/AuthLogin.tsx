@@ -4,6 +4,7 @@ import { LoginAccountDto } from '../../../domain/dto'
 import { AuthLayout } from '../layout/AuthLayout'
 import { InputPassword } from '../../shared/components'
 import { FormValidations, useForm } from '../../hooks'
+import { useAuth } from '../../../application/hooks'
 
 const formData: LoginAccountDto = {
   email: '',
@@ -25,13 +26,17 @@ export const AuthLogin: React.FC = () => {
     formState,
     isFormValid,
     onInputChange,
-    onResetForm
   } = useForm( formData, formValidations )
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const { loginAccount, isLoading } = useAuth()
 
   const onLoginAccount = (e: React.FormEvent) => {
     e.preventDefault()
     setFormSubmitted( true )
+
+    if ( !isFormValid ) return
+
+    loginAccount( formState )
   }
 
   return (
@@ -76,7 +81,10 @@ export const AuthLogin: React.FC = () => {
             </div>
           </div>
           <div className="form__buttons">
-            <button type='submit' className='form-button__submit'>Iniciar sesión</button>
+            <button 
+              disabled={ isLoading } 
+              type='submit' 
+              className='form-button__submit'>Iniciar sesión</button>
           </div>
         </form>
       </>

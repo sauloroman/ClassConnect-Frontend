@@ -11,11 +11,14 @@
 // Helpers
 @use './helpers/flex';
 @use './helpers/form';
-@use './helpers/spinner';
-@use './helpers/alert';
+
+// Components
+@use '../shared/components/alert/alert';
+@use '../shared/components/loading-spinner/spinner';
 
 // auth
 @use '../auth/layout/auth-layout';
+@use '../auth/validate-account/validate-account';
 
 // Utilities
 @use './base/utilities';

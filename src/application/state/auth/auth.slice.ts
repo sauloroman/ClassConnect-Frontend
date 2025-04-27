@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthStatus, UserEntity } from "../../../domain/entities";
-import { LoginAccountResponse } from "../../../domain/dto";
+import { LoginAccountResponse, RegisterAccountDto } from "../../../domain/dto";
 
 interface InitialStateAuth {
   user: UserEntity | null 
@@ -8,6 +8,10 @@ interface InitialStateAuth {
   isLoading: boolean
   error: string | null
   msg: string | null
+  validateAccount: {
+    temporalUser: Partial<RegisterAccountDto> | null,
+    newValidationCode: boolean,
+  }
 }
 
 const initialStateAuth: InitialStateAuth = {
@@ -15,7 +19,11 @@ const initialStateAuth: InitialStateAuth = {
   error: null,
   msg: null,
   status: AuthStatus.UNAUTHENTICATED,
-  user: null
+  user: null,
+  validateAccount: { 
+    temporalUser: null ,
+    newValidationCode: false
+  }
 }
 
 export const authSlice = createSlice({
@@ -32,6 +40,14 @@ export const authSlice = createSlice({
 
     setIsLoadingAuth: ( state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload
+    },
+
+    setTempUser: ( state, { payload }: PayloadAction<Partial<RegisterAccountDto | null>> ) => {
+      state.validateAccount.temporalUser = payload
+    },
+
+    newValidationCode: ( state ) => {
+      state.validateAccount.newValidationCode = true
     }
 
   }
@@ -40,4 +56,6 @@ export const authSlice = createSlice({
 export const {
   login,
   setIsLoadingAuth,
+  setTempUser,
+  newValidationCode,
 } = authSlice.actions

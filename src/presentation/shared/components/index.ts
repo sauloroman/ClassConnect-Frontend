@@ -1,3 +1,3 @@
-export { InputPassword } from './InputPassword'
-export { LoadingSpinner } from './LoadingSpinner'
-export { Alert } from './Alert'
+export { InputPassword } from './input-password/InputPassword'
+export { LoadingSpinner } from './loading-spinner/LoadingSpinner'
+export { Alert } from './alert/Alert'

@@ -1,46 +1,11 @@
-import React, { useState } from 'react';
-import { RegisterAccountDto } from '../../../domain/dto';
+import React, { useEffect, useState } from 'react';
 import { Roles } from '../../../domain/entities';
 import { useAuth } from '../../../application/hooks';
 
-import { FormValidations, useForm, useValidatePassword } from '../../hooks';
+import { useForm, useNavigatePage, useValidatePassword } from '../../hooks';
 import { AuthLayout } from '../layout/AuthLayout';
 import { InputPassword } from '../../shared/components';
-import { regularExp } from '../../shared/utils';
-import { isPasswordValid } from '../../shared/helpers';
-
-const formData: RegisterAccountDto = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  role: Roles.TEACHER,
-  confirmPassword: '',
-};
-
-const formValidations: FormValidations<RegisterAccountDto> = {
-  firstName: [
-    (value: string) => value.trim().length >= 2,
-    'El nombre es obligatorio',
-  ],
-  lastName: [
-    (value: string) => value.trim().length >= 2,
-    'El apellido es obligatio',
-  ],
-  email: [
-    (value: string) => regularExp.email.test(value),
-    'Debe ser un correo válido',
-  ],
-  password: [
-    (value: string) => isPasswordValid(value),
-    `
-    Mínimo 8 caracteres de longitud.
-    Debe tener al menos una mayúscula.
-    Debe tener al menos 1 número.`,
-  ],
-  confirmPassword: [(value: string) => value.trim().length > 2, ''],
-  role: [(value: string) => value !== '', 'Selecciona un rol'],
-};
+import { formData, formValidations } from './data/form-data';
 
 export const AuthRegister: React.FC = () => {
   const {
@@ -58,11 +23,11 @@ export const AuthRegister: React.FC = () => {
     isFormValid,
     formState,
     onInputChange,
-    onResetForm,
   } = useForm(formData, formValidations);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { errorDifferentPasswords } = useValidatePassword( password, confirmPassword )
-  const { registerAccount, isLoading } = useAuth()
+  const { registerAccount, isLoading, temporalUser } = useAuth()
+  const { navigateToPage } = useNavigatePage()
 
   const onRegisterAccount = (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,8 +37,13 @@ export const AuthRegister: React.FC = () => {
 
     const { confirmPassword, ...restFormState } = formState
     registerAccount( restFormState )
-    onResetForm()
-  };
+  }
+  
+  useEffect(() => {
+    if ( !!temporalUser ) {
+      navigateToPage('/classconnect/auth/validate-account')
+    }
+  }, [temporalUser])
 
   return (
     <AuthLayout

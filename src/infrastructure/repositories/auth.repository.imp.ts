@@ -1,4 +1,10 @@
-import { RegisterAccountDto, RegisterAccountResponse } from "../../domain/dto";
+import { 
+  LoginAccountDto, 
+  LoginAccountResponse, 
+  RegisterAccountDto, 
+  RegisterAccountResponse, 
+  ValidateAccountDto 
+} from "../../domain/dto";
 import { AuthRepository } from "../../domain/repositories";
 import { classconnectApiPublic } from "../api/classconnect.api";
 
@@ -8,6 +14,22 @@ export class ClassConnectAPIAuthRepository implements AuthRepository {
     const { data } = await classconnectApiPublic.post<RegisterAccountResponse>(
       '/users', 
       registerAccountDto 
+    )
+    return data
+  }
+
+  async loginAccount( loginAccountDto: LoginAccountDto ): Promise<LoginAccountResponse> {
+    const { data } = await classconnectApiPublic.post<LoginAccountResponse>(
+      '/auth/login',
+      loginAccountDto,
+    )
+    return data
+  }
+
+  async validateAccount(validateAccountDto: ValidateAccountDto): Promise<LoginAccountResponse> {
+    const { data } = await classconnectApiPublic.post<LoginAccountResponse>(
+      'auth/validate-account',
+      validateAccountDto
     )
     return data
   }

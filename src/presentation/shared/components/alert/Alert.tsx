@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo } from 'react'
-import { useAlert } from '../../../application/hooks'
-import { AlertType } from '../../../application/state/alert/alert.slice'
+import React, { useMemo } from 'react'
+import { AlertType } from '../../../../application/state/alert/alert.slice'
+import { useAlert } from '../../../../application/hooks'
 
 export const Alert: React.FC = () => {
 
