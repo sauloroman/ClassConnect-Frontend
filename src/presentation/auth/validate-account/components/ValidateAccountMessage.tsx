@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAuth } from '../../../../application/hooks'
-import logo from '../../../assets/img/logo-background-white.png'
 import { ValidateAccountTimer } from './ValidateAccountTimer'
+import logo from '../../../assets/img/logo-background-white.png'
 
 export const ValidateAccountMessage: React.FC = () => {
 
@@ -15,8 +15,10 @@ export const ValidateAccountMessage: React.FC = () => {
   return (
     <div className='validate-account-message'>
       <img src={logo} alt="Classconnect White Logo" className="validate-account-message__logo" />
+      <div className="validate-account-message__background">
+        <p className='validate-account-message__banner'>ClassConnect</p>
+      </div>
       <div className="validate-account-message__container">
-        
         <div className="validate-account-message__content">
           <h1 className='heading-secondary u-text-center'>🚀 Valida tu correo electrónico</h1>
           <div className="flex flex-center">
