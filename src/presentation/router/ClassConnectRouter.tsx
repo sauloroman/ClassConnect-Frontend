@@ -1,24 +1,18 @@
 import React from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { AuthRouter } from './AuthRouter'
-import { AppRouter } from './AppRouter'
-import { useAuth } from '../../application/hooks'
-import { AuthStatus } from '../../domain/entities'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { CalendarPage, HomePage, SettingsPage, StatsPage } from '../classconnect'
 
 export const ClassConnectRouter: React.FC = () => {
 
   const { status } = useAuth()
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {
-          status === AuthStatus.AUTHENTICATED
-          ? (<Route path='classconnect/app/*' element={ <AppRouter /> } /> )
-          : (<Route path='classconnect/auth/*' element={ <AuthRouter /> } />)
-        }
-        <Route path='/*' element={ <Navigate to={'/classconnect/app/home'}/> } />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='home' element={<HomePage />} />
+      <Route path='calendar' element={<CalendarPage />} />
+      <Route path='stats' element={<StatsPage />} />
+      <Route path='settings' element={<SettingsPage />} />
+      <Route path='/*' element={<Navigate to={'/home'} />} />
+    </Routes>
   )
 }

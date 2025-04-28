@@ -1,6 +1,10 @@
+export { AuthValidateAccount } from './validate-account/AuthValidateAccount'
 export { AuthForgotPassword } from './forgot-password/AuthForgotPassword'
 export { AuthLayout } from './layout/AuthLayout'
 export { AuthLogin } from './login/AuthLogin'
 export { AuthRecoverPassword } from './recover-password/AuthRecoverPassword'
 export { AuthRegister } from './register/AuthRegister'
-export { AuthValidateAccount } from './validate-account/AuthValidateAccount'
+
+export { ValidateAccountMessage } from './validate-account/components/ValidateAccountMessage'
+export { ValidateAccountForm } from './validate-account/components/ValidateAccountForm'
+export { ValidateAccountTimer } from './validate-account/components/ValidateAccountTimer'

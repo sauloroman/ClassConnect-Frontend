@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { 
   getEnvVariables, 
-  getLocalStorage 
 } from '../../presentation/shared/helpers'
 
 const { VITE_BACKEND_URL } = getEnvVariables()
@@ -17,10 +16,10 @@ export const classconnectApiPrivate = axios.create({
 })
 
 classconnectApiPrivate.interceptors.request.use( (config) => {
-  const classconnectToken = getLocalStorage('classconnectToken')
+  const classconnectToken = localStorage.getItem('classconnectToken') ?? ''
 
   if ( classconnectToken ) {
-    config.headers.Authorization = `Bearer ${classconnectToken}`
+    config.headers['Authorization'] = `Bearer ${classconnectToken}`
   }
 
   return config

@@ -24,6 +24,14 @@
   text-align: center;
 }
 
+.u-hidden {
+  display: none;
+}
+
+.u-show {
+  display: block;
+}
+
 .u-mb-4 {
   margin-bottom: 1rem;
 }
@@ -31,4 +39,8 @@
 .u-disabled {
   pointer-events: none;
   opacity: .5;
+}
+
+.u-strong {
+  font-weight: 900;
 }

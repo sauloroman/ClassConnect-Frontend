@@ -1,16 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthStatus, UserEntity } from "../../../domain/entities";
-import { LoginAccountResponse, RegisterAccountDto } from "../../../domain/dto";
+import { LoginAccountResponse } from "../../../domain/dto";
 
 interface InitialStateAuth {
   user: UserEntity | null 
   status: AuthStatus
   isLoading: boolean
   error: string | null
-  msg: string | null
-  validateAccount: {
-    temporalUser: Partial<RegisterAccountDto> | null,
-    newValidationCode: boolean,
+  msg: string | null,
+  verificationCodeSent: {
+    email: string
   }
 }
 
@@ -20,9 +19,8 @@ const initialStateAuth: InitialStateAuth = {
   msg: null,
   status: AuthStatus.UNAUTHENTICATED,
   user: null,
-  validateAccount: { 
-    temporalUser: null ,
-    newValidationCode: false
+  verificationCodeSent: {
+    email: ''
   }
 }
 
@@ -42,25 +40,14 @@ export const authSlice = createSlice({
       state.isLoading = payload
     },
 
-    setTempUser: ( state, { payload }: PayloadAction<Partial<RegisterAccountDto | null>> ) => {
-      state.validateAccount.temporalUser = payload
-    },
-
-    newValidationCode: ( state ) => {
-      state.validateAccount.newValidationCode = true
-    },
-
-    resetValidationCode: ( state ) => {
-      state.validateAccount.newValidationCode = false
+    setVerificationCodeEmailSent: ( state, { payload }: PayloadAction<string>) => {
+      state.verificationCodeSent.email = payload
     }
-
   }
 })
 
 export const {
   login,
   setIsLoadingAuth,
-  setTempUser,
-  newValidationCode,
-  resetValidationCode
+  setVerificationCodeEmailSent
 } = authSlice.actions

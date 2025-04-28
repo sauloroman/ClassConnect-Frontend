@@ -19,6 +19,7 @@
 // auth
 @use '../auth/layout/auth-layout';
 @use '../auth/validate-account/validate-account';
+@use '../auth/forgot-password/forgot-password';
 
 // Utilities
 @use './base/utilities';

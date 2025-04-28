@@ -26,7 +26,7 @@ export const AuthRegister: React.FC = () => {
   } = useForm(formData, formValidations);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { errorDifferentPasswords } = useValidatePassword( password, confirmPassword )
-  const { registerAccount, isLoading, temporalUser } = useAuth()
+  const { registerAccount, isLoading, verificationCodeSent } = useAuth()
   const { navigateToPage } = useNavigatePage()
 
   const onRegisterAccount = (e: React.FormEvent) => {
@@ -38,12 +38,12 @@ export const AuthRegister: React.FC = () => {
     const { confirmPassword, ...restFormState } = formState
     registerAccount( restFormState )
   }
-  
+
   useEffect(() => {
-    if ( !!temporalUser ) {
-      navigateToPage('/classconnect/auth/validate-account')
+    if ( verificationCodeSent.email ) {
+      return navigateToPage(`/auth/validate-account/message`)
     }
-  }, [temporalUser])
+  }, [ verificationCodeSent.email ])
 
   return (
     <AuthLayout
@@ -53,7 +53,7 @@ export const AuthRegister: React.FC = () => {
       text="Crea una cuenta y comienza uniéndote a tus clases."
       textNavigate="¿Ya tienes una cuenta?"
       textLink="Inicia sesión"
-      link="/classconnect/auth/login"
+      link="/auth/login"
     >
       <div className="register">
         <form onSubmit={onRegisterAccount} className="form login__form">

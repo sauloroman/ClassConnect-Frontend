@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { 
   LoginAccountDto, 
   LoginAccountResponse, 
@@ -8,33 +9,60 @@ import {
 } from "../../domain/dto";
 import { AuthRepository } from "../../domain/repositories";
 import { classconnectApiPublic } from "../api/classconnect.api";
+=======
+import {
+  LoginAccountDto,
+  LoginAccountResponse,
+  RegisterAccountDto,
+  RegisterAccountResponse,
+  RenewTokenReponse,
+  ResendValidationCode,
+  ValidateAccountDto,
+} from '../../domain/dto';
+import { AuthRepository } from '../../domain/repositories';
+import {
+  classconnectApiPrivate,
+  classconnectApiPublic,
+} from '../api/classconnect.api';
+>>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
 
 export class ClassConnectAPIAuthRepository implements AuthRepository {
-
-  async registerAccount(registerAccountDto: Partial<RegisterAccountDto>): Promise<RegisterAccountResponse> {
+  async registerAccount(
+    registerAccountDto: Partial<RegisterAccountDto>
+  ): Promise<RegisterAccountResponse> {
     const { data } = await classconnectApiPublic.post<RegisterAccountResponse>(
-      '/users', 
-      registerAccountDto 
-    )
-    return data
+      '/users',
+      registerAccountDto
+    );
+    return data;
   }
 
-  async loginAccount( loginAccountDto: LoginAccountDto ): Promise<LoginAccountResponse> {
+  async loginAccount(
+    loginAccountDto: LoginAccountDto
+  ): Promise<LoginAccountResponse> {
     const { data } = await classconnectApiPublic.post<LoginAccountResponse>(
       '/auth/login',
-      loginAccountDto,
-    )
-    return data
+      loginAccountDto
+    );
+    return data;
   }
 
-  async validateAccount(validateAccountDto: ValidateAccountDto): Promise<LoginAccountResponse> {
+  async validateAccount(
+    validateAccountDto: ValidateAccountDto
+  ): Promise<LoginAccountResponse> {
     const { data } = await classconnectApiPublic.post<LoginAccountResponse>(
-      'auth/validate-account',
+      '/auth/validate-account',
       validateAccountDto
-    )
+    );
+    return data;
+  }
+
+  async resenValidationCode(email: string): Promise<ResendValidationCode> {
+    const { data } = await classconnectApiPublic.post('/auth/resend-verification-code', {email}) 
     return data
   }
 
+<<<<<<< HEAD
   async resendValidationCode(email: string): Promise<NewValidationCodeReponse> {
     const { data } = await classconnectApiPublic.post<NewValidationCodeReponse>(
       '/auth/resend-verification-code',
@@ -44,3 +72,10 @@ export class ClassConnectAPIAuthRepository implements AuthRepository {
   }
 
 }
+=======
+  async renewToken(): Promise<RenewTokenReponse> {
+    const { data } = await classconnectApiPrivate.get<RenewTokenReponse>('/auth/renew-token');
+    return data;
+  }
+}
+>>>>>>> dec80eaef13d2f62fe7914553f290288b282577f

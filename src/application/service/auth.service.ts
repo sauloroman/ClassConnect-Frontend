@@ -4,6 +4,8 @@ import {
   NewValidationCodeReponse, 
   RegisterAccountDto, 
   RegisterAccountResponse, 
+  RenewTokenReponse, 
+  ResendValidationCode, 
   ValidateAccountDto
 } from "../../domain/dto";
 import { AuthRepository } from "../../domain/repositories";
@@ -50,12 +52,22 @@ export class AuthService {
     }
   }
 
-  async resendVerificationCode( email: string ): Promise<NewValidationCodeReponse> {
+  async renewToken(): Promise<RenewTokenReponse> {
     try {
-      const data = await this.authRepo.resendValidationCode( email )
+      const data = await this.authRepo.renewToken()
       return data
     } catch (error: any) {
-      const errorMessage = error.response?.data.error ?? 'No se ha podido validar la cuenta'
+      const errorMessage = error.response?.data.error ?? 'No se pudo continuar con la sesión activa'
+      throw errorMessage
+    }
+  }
+
+  async resendVerificationCode( email: string ): Promise<ResendValidationCode> {
+    try {
+      const data = await this.authRepo.resenValidationCode( email )
+      return data
+    } catch (error: any) {
+      const errorMessage = error.response?.data.error ?? 'No fue posible mandar el correo de verificacion'
       throw errorMessage
     }
   }

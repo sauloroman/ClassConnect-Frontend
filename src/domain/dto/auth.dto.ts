@@ -13,6 +13,7 @@ export interface RegisterAccountResponse {
   ok: boolean;
   msg: string;
   user: UserEntity
+  token: string;
 }
 
 export interface LoginAccountDto {
@@ -32,7 +33,13 @@ export interface ValidateAccountDto {
   code: string;
 }
 
-export interface NewValidationCodeReponse {
-  ok: boolean,
-  msg: string,
+export interface RenewTokenReponse {
+  ok: boolean;
+  user: UserEntity;
+  token: string;
+}
+
+export interface ResendValidationCode {
+  ok: boolean;
+  msg: string;
 }

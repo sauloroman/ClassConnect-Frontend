@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../../../shared/components'
 
 export const ValidateAccountForm: React.FC = () => {
   
+<<<<<<< HEAD
   const { 
     temporalUser, 
     isLoading, 
@@ -14,6 +15,10 @@ export const ValidateAccountForm: React.FC = () => {
     resentValidationCode, 
   } = useAuth()
   formData.email = temporalUser?.email as string
+=======
+  const { isLoading, validateAccount, verificationCodeSent: { email }, resendVerificationCode } = useAuth()
+  formData.email = email 
+>>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
 
   const { 
     code,
@@ -36,8 +41,12 @@ export const ValidateAccountForm: React.FC = () => {
 
   const onResendValidationCode = ( e:React.FormEvent ) => {
     e.preventDefault()
+<<<<<<< HEAD
     resentValidationCode( temporalUser?.email! )
     onResetForm()
+=======
+    resendVerificationCode( email )
+>>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
   } 
 
   return (
@@ -68,12 +77,16 @@ export const ValidateAccountForm: React.FC = () => {
             <div className="form__buttons">
               <button
                 onClick={ onValidateAccount } 
-                disabled={ isLoading || newValidationCode } 
+                // disabled={ isLoading || renewCode } 
                 type='submit' 
-                className={`form-button__submit ${(isLoading || newValidationCode) && 'u-disabled'}`}
+                // className={`form-button__submit ${(isLoading || renewCode) && 'u-disabled'}`}
               >Validar cuenta</button>
 
+<<<<<<< HEAD
               { newValidationCode && <button onClick={ onResendValidationCode } className='form-button__outlined'>Obtener código</button> }
+=======
+              {/* { renewCode && <button onClick={onResendValidationCode} className='form-button__outlined'>Obtener código</button> } */}
+>>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
             </div>
           </form>
         )

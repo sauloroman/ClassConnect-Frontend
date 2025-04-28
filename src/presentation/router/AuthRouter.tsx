@@ -5,7 +5,8 @@ import {
   AuthLogin, 
   AuthRecoverPassword, 
   AuthRegister, 
-  AuthValidateAccount
+  AuthValidateAccount,
+  ValidateAccountMessage
 } from '../auth'
 
 export const AuthRouter: React.FC = () => {
@@ -15,8 +16,9 @@ export const AuthRouter: React.FC = () => {
       <Route path='register' element={<AuthRegister />} />
       <Route path='forgot-password' element={<AuthForgotPassword />} />
       <Route path='recover-password' element={<AuthRecoverPassword />} />
-      <Route path='validate-account' element={<AuthValidateAccount />} />
-      <Route path="/*" element={<Navigate to={'/classconnect/auth/login'} />} />
+      <Route path='validate-account/message' element={<ValidateAccountMessage />} /> 
+      <Route path='validate-account/:token' element={<AuthValidateAccount />} /> 
+      <Route path="/*" element={<Navigate to={'/auth/login'} />} />
     </Routes>
   )
 }
