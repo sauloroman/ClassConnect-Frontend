@@ -8,7 +8,6 @@
   }
   
   &__content-box {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,9 +19,10 @@
   
   &__content {
     width: 90%;
-    padding: v.$gutter calc( v.$gutter * 3 );
-
+    padding: v.$gutter calc( v.$gutter * 2 );
+    
     @include m.responsiveDesign("laptop") {
+      width: 100%;
       padding: calc( v.$gutter * 2 ) v.$gutter;
     }
   }

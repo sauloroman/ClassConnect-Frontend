@@ -6,8 +6,8 @@ import { LoadingSpinner } from '../../../shared/components'
 
 export const ValidateAccountForm: React.FC = () => {
   
-  const { temporalUser, isLoading, validateAccount, newValidationCode } = useAuth()
-  formData.email = temporalUser?.email as string
+  const { isLoading, validateAccount, verificationCodeSent: { email }, resendVerificationCode } = useAuth()
+  formData.email = email 
 
   const { 
     code,
@@ -29,7 +29,7 @@ export const ValidateAccountForm: React.FC = () => {
 
   const onResendValidationCode = ( e:React.FormEvent ) => {
     e.preventDefault()
-    
+    resendVerificationCode( email )
   } 
 
   return (
@@ -60,12 +60,12 @@ export const ValidateAccountForm: React.FC = () => {
             <div className="form__buttons">
               <button
                 onClick={ onValidateAccount } 
-                disabled={ isLoading || newValidationCode } 
+                // disabled={ isLoading || renewCode } 
                 type='submit' 
-                className={`form-button__submit ${(isLoading || newValidationCode) && 'u-disabled'}`}
+                // className={`form-button__submit ${(isLoading || renewCode) && 'u-disabled'}`}
               >Validar cuenta</button>
 
-              { newValidationCode && <button className='form-button__outlined'>Obtener código</button> }
+              {/* { renewCode && <button onClick={onResendValidationCode} className='form-button__outlined'>Obtener código</button> } */}
             </div>
           </form>
         )

@@ -2,8 +2,8 @@ import { Dispatch } from "@reduxjs/toolkit"
 import { LoginAccountDto, RegisterAccountDto, ValidateAccountDto } from "../../../domain/dto"
 import { ClassConnectAPIAuthRepository } from "../../../infrastructure/repositories/auth.repository.imp"
 import { AuthService } from "../../service/auth.service"
-import { login, newValidationCode, setIsLoadingAuth, setTempUser } from "./auth.slice"
-import { showAlertError, showAlertSuccess } from "../alert/alert.slice"
+import { login, setIsLoadingAuth, setVerificationCodeEmailSent } from "./auth.slice"
+import { showAlertError, showAlertInfo, showAlertSuccess } from "../alert/alert.slice"
 
 const authRepository = new ClassConnectAPIAuthRepository()
 const authService = new AuthService({ authRepo: authRepository })
@@ -17,8 +17,8 @@ export const startRegisteringAccount = ( registerAccountDto: Partial<RegisterAcc
       
       const data = await authService.registerAccount( registerAccountDto )
       dispatch( showAlertSuccess( data.msg ) )
-      dispatch( setTempUser(registerAccountDto) )
-      localStorage.setItem('classconnectTempUser', JSON.stringify( registerAccountDto ) )
+      dispatch( setVerificationCodeEmailSent( registerAccountDto.email! ) )
+      localStorage.setItem('classconnectTempEmail', JSON.stringify(registerAccountDto.email! ) )
 
     } catch (error) {
       dispatch( showAlertError( error as string ) )  
@@ -60,18 +60,56 @@ export const startValidatingAccount = ( validateAccountDto: ValidateAccountDto )
       const data = await authService.validateAccount( validateAccountDto )
 
       localStorage.setItem('classconnectToken', data.token )
+      localStorage.removeItem('classconnectTempUser')
+
       dispatch( showAlertSuccess( data.msg ) )
       dispatch( login( data ) )
-      dispatch( setTempUser(null) )
 
     } catch (error) {
-      if ( error === 'El código ha expirado. Genera uno nuevo' ) {
-        dispatch( newValidationCode() )
-      }
-
       dispatch( showAlertError( error as string ) )
     }
 
     dispatch( setIsLoadingAuth(false) )
+  }
+}
+
+export const startResendingVerificationCode = ( email: string ) => {
+  return async ( dispatch: Dispatch ) => {
+
+    dispatch( setIsLoadingAuth( true ) )
+
+    try {
+
+      const { msg } = await authService.resendVerificationCode( email )
+      dispatch( showAlertInfo( msg ) )
+
+    } catch (error) {
+      dispatch( showAlertError( error as string ) )
+    }
+
+
+    dispatch( setIsLoadingAuth( false ) )
+
+  }
+}
+
+export const startRenewingToken = () => {
+  return async ( dispatch: Dispatch ) => {
+
+    dispatch( setIsLoadingAuth(true) )
+
+    try {
+
+      const data = await authService.renewToken()
+
+      dispatch( login({ msg: '', ...data }) )
+      localStorage.setItem('classconnectToken', data.token )
+
+    } catch (error) {
+      console.log(error)
+    }
+
+    dispatch( setIsLoadingAuth(false) )
+
   }
 }

@@ -1,6 +1,6 @@
 @use '../../styles/abstracts/variables' as v;
 
-.validate-account {
+.validate-account-message {
 
   height: 100vh;
   display: flex;
@@ -15,16 +15,16 @@
   }
 
   &__container {
+    animation: moveToLeft 2s ease;
     width: 60rem;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25);
     border: 1px solid v.$border-color;
-    padding: 4rem 2rem;
+    padding: 4rem;
     border-radius: 10px;
   }
 
   &__content {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   &__text {
@@ -39,6 +39,26 @@
   &__form {
     width: 80%;
     margin: 0 auto;
+  }
+
+  &__strong {
+    display: inline;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid v.$color-gray-dark;
+  }
+
+  &__no:link, &__no:visited {
+    font-weight: 700;
+    padding-bottom: 2px;
+    border-bottom: 2px solid currentColor;
+    color: v.$color-tertiary;
+    transition: all .4s ease;
+  }
+
+  &__no:active, &__no:hover {
+    color: v.$color-gray-dark;
   }
 
 }

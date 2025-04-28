@@ -1,13 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AuthRouter } from './AuthRouter'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { CalendarPage, HomePage, SettingsPage, StatsPage } from '../classconnect'
 
 export const ClassConnectRouter: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='classconnect/auth/*' element={ <AuthRouter /> } />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='home' element={<HomePage />} />
+      <Route path='calendar' element={<CalendarPage />} />
+      <Route path='stats' element={<StatsPage />} />
+      <Route path='settings' element={<SettingsPage />} />
+      <Route path='/*' element={<Navigate to={'/home'} />} />
+    </Routes>
   )
 }

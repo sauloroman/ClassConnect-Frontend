@@ -1,0 +1,1 @@
+export { jwtAdapter } from './jwt.plugin'

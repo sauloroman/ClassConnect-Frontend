@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
 import { LoginAccountDto, RegisterAccountDto, ValidateAccountDto } from "../../domain/dto"
-import { startLoginingAccount, startRegisteringAccount, startValidatingAccount } from "../state/auth/auth.thunk"
-import { setTempUser } from "../state/auth/auth.slice"
+import { startLoginingAccount, startRegisteringAccount, startRenewingToken, startResendingVerificationCode, startValidatingAccount } from "../state/auth/auth.thunk"
+import { setVerificationCodeEmailSent } from "../state/auth/auth.slice"
 
 export const useAuth = () => {
 
   const dispatch = useDispatch<any>()
-  const { isLoading, msg, status, user, validateAccount: { temporalUser, newValidationCode } } = useSelector( (state: RootState) => state.auth )
+  const { isLoading, msg, status, user, verificationCodeSent } = useSelector( (state: RootState) => state.auth )
 
   const registerAccount = ( registerAccountDto: Partial<RegisterAccountDto> ) => {
     dispatch( startRegisteringAccount( registerAccountDto ) )
@@ -17,24 +17,33 @@ export const useAuth = () => {
     dispatch( startLoginingAccount( loginAccountDto ) )
   }
 
-  const stablishTempUser = ( user: Partial<RegisterAccountDto> ) => dispatch( setTempUser(user) )
-
   const validateAccount = ( validateAccountDto: ValidateAccountDto ) => {
     dispatch( startValidatingAccount(validateAccountDto) )
   }
 
+  const resendVerificationCode = ( email: string  ) => {
+    dispatch( startResendingVerificationCode(email) )
+  }
+
+  const renewToken = () => dispatch( startRenewingToken() )
+
+  const setTempEmail = ( email: string ) => dispatch( setVerificationCodeEmailSent( email ) )
+
   return {
+    // Properties
     isLoading,
     msg,
     status,
     user,
-    temporalUser,
-    newValidationCode,
+    verificationCodeSent,
 
+    // Methods
     loginAccount,
     registerAccount,
-    stablishTempUser,
     validateAccount,
+    renewToken,
+    resendVerificationCode,
+    setTempEmail,
   }
 
 }
