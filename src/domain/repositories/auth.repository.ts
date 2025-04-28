@@ -1,7 +1,6 @@
 import { 
   LoginAccountDto, 
-  LoginAccountResponse, 
-  NewValidationCodeReponse, 
+  LoginAccountResponse,  
   RegisterAccountDto, 
   RegisterAccountResponse, 
   RenewTokenReponse, 

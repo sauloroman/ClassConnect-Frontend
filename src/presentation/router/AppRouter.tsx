@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AuthRouter } from './AuthRouter'
-import { ClassConnectRouter } from './ClassconnectRouter'
 import { useAuth } from '../../application/hooks'
 import { AuthStatus } from '../../domain/entities'
+import { ClassConnectRouter } from './ClassConnectRouter'
 
 export const AppRouter: React.FC = () => {
   
