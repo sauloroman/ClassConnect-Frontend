@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../../assets/img/logo-background-white.png';
 import { useNavigatePage } from '../../../hooks';
+import { LogoClassConnect } from '../../../shared/components';
 
 interface AuthPasswordLayoutProps {
   children: React.ReactNode;
@@ -23,16 +23,7 @@ export const AuthPasswordLayout: React.FC<AuthPasswordLayoutProps> = ({
                 &larr;
               </button>
             )}
-            <div className="auth-layout__logo-box">
-              <img
-                className="auth-layout__logo"
-                src={logo}
-                alt="ClassConnect Logo Bg white"
-              />
-              <p className="auth-layout__name">
-                Class<span>Connect</span>
-              </p>
-            </div>
+            <LogoClassConnect />
           </header>
           {children}
         </div>

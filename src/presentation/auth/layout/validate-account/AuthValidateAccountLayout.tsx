@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../assets/img/logo-background-white.png'
+import { LogoClassConnect } from '../../../shared/components';
 
 interface AuthValidateAccountLayoutProps {
   children: React.ReactNode;
@@ -13,11 +13,9 @@ export const AuthValidateAccountLayout: React.FC<
 > = ({ children, title, subtitle, message }) => {
   return (
     <div className="validate-account">
-      <img
-        src={logo}
-        alt="Classconnect White Logo"
-        className="validate-account__logo"
-      />
+      <div className="validate-account__logo">
+        <LogoClassConnect />
+      </div>
       <div className="validate-account__background">
         <p className="validate-account__banner">ClassConnect</p>
       </div>

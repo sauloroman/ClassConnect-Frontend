@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { LoadingSpinner } from '../../../shared/components';
+import { LoadingSpinner, LogoClassConnect } from '../../../shared/components';
 import { useAuth } from '../../../../application/hooks';
-import logo from '../../../assets/img/logo-background-white.png';
-
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -45,16 +43,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
 
         <div className='auth-layout__content-box'>
           <section className={`auth-layout__content ${animationName}`}>
-            <div className="auth-layout__logo-box">
-              <img
-                className="auth-layout__logo"
-                src={logo}
-                alt="ClassConnect Logo Bg white"
-              />
-              <p className="auth-layout__name">
-                Class<span>Connect</span>
-              </p>
-            </div>
+            <LogoClassConnect />
 
             <header className="auth-layout__header">
               <h1 className="heading-primary">
