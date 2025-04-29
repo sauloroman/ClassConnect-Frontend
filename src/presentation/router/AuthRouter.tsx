@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { 
   AuthForgotPassword, 
   AuthLogin, 
-  AuthRecoverPassword, 
+  AuthChangePassword, 
   AuthRegister, 
   AuthValidateAccount,
   AuthValidateAccountMessage
@@ -14,8 +14,8 @@ export const AuthRouter: React.FC = () => {
     <Routes>
       <Route path='login' element={<AuthLogin />} />
       <Route path='register' element={<AuthRegister />} />
-      <Route path='forgot-password' element={<AuthForgotPassword />} />
-      <Route path='recover-password' element={<AuthRecoverPassword />} />
+      <Route path='password/forgot-password' element={<AuthForgotPassword />} />
+      <Route path='password/change-password/:token' element={<AuthChangePassword />} />
       <Route path='validate-account/message' element={<AuthValidateAccountMessage />} />
       <Route path='validate-account/:token' element={<AuthValidateAccount />} /> 
       <Route path="/*" element={<Navigate to={'/auth/login'} />} />

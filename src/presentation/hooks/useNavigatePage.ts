@@ -9,12 +9,17 @@ export const useNavigatePage = () => {
     navigate(page)
   }
 
+  const returnPage = () => {
+    navigate(-1)
+  }
+
   const getTokenFromParams = (): string => {
     return params?.token ?? ''
   }
 
   return {
     navigateToPage,
+    returnPage,
     getTokenFromParams,
   }
 

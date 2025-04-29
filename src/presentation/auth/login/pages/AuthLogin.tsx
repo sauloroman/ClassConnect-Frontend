@@ -65,7 +65,7 @@ export const AuthLogin: React.FC = () => {
                 >{passwordValid}</span>
             </>
             <div className="form__forgot-password-box">
-              <Link to={'/auth/forgot-password'}>
+              <Link to={'/auth/password/forgot-password'}>
                 <p className='form__forgot-password'>Olvidé mi contraseña</p>
               </Link>
             </div>
@@ -74,7 +74,7 @@ export const AuthLogin: React.FC = () => {
             <button 
               disabled={ isLoading } 
               type='submit' 
-              className='form-button__submit'>Iniciar sesión</button>
+              className='btn btn--grad-1 u-w-100'>🔐 Iniciar sesión</button>
           </div>
         </form>
       </>

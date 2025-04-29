@@ -1,4 +1,6 @@
 import {
+  ForgotPassswordDto,
+  ForgotPasswordDtoResponse,
   LoginAccountDto,
   LoginAccountResponse,
   RegisterAccountDto,
@@ -14,6 +16,7 @@ import {
 } from '../api/classconnect.api';
 
 export class ClassConnectAPIAuthRepository implements AuthRepository {
+  
   async registerAccount(
     registerAccountDto: Partial<RegisterAccountDto>
   ): Promise<RegisterAccountResponse> {
@@ -53,4 +56,10 @@ export class ClassConnectAPIAuthRepository implements AuthRepository {
     const { data } = await classconnectApiPrivate.get<RenewTokenReponse>('/auth/renew-token');
     return data;
   }
+
+  async forgotPassword(forgotPassswordDto: ForgotPassswordDto): Promise<ForgotPasswordDtoResponse> {
+    const {data} = await classconnectApiPublic.post('/auth/forgot-password', forgotPassswordDto )
+    return data
+  }
+
 }

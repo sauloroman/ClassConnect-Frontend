@@ -1,7 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
-import { LoginAccountDto, RegisterAccountDto, ValidateAccountDto } from "../../domain/dto"
-import { startLoginingAccount, startRegisteringAccount, startRenewingToken, startResendingVerificationCode, startValidatingAccount } from "../state/auth/auth.thunk"
+import { 
+  LoginAccountDto, 
+  RegisterAccountDto, 
+  ValidateAccountDto, 
+  ForgotPassswordDto 
+} from "../../domain/dto"
+import { startLoginingAccount, startRegisteringAccount, startRenewingToken, startResendingVerificationCode, startSendingEmailToRecoverPassword, startValidatingAccount } from "../state/auth/auth.thunk"
 import { setVerificationCodeEmailSent } from "../state/auth/auth.slice"
 
 export const useAuth = () => {
@@ -29,6 +34,10 @@ export const useAuth = () => {
 
   const setTempEmail = ( email: string | null ) => dispatch( setVerificationCodeEmailSent( email ) )
 
+  const sendEmailToRecoverPassword = ( forgotPassswordDto: ForgotPassswordDto ) => {
+    dispatch( startSendingEmailToRecoverPassword( forgotPassswordDto ) )
+  }
+
   return {
     // Properties
     isLoading,
@@ -44,6 +53,8 @@ export const useAuth = () => {
     renewToken,
     resendVerificationCode,
     setTempEmail,
+    sendEmailToRecoverPassword
   }
+
 
 }

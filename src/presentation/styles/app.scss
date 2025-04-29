@@ -11,6 +11,7 @@
 // Helpers
 @use './helpers/flex';
 @use './helpers/form';
+@use './helpers/button';
 
 // Components
 @use '../shared/components/alert/alert';
@@ -19,6 +20,7 @@
 // auth
 @use '../auth/layout/register-account/auth-layout';
 @use '../auth/layout/validate-account/auth-validate-account-layout';
+@use '../auth/layout/password/auth-password-layout';
 
 // Utilities
 @use './base/utilities';

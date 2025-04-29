@@ -43,3 +43,12 @@ export interface ResendValidationCode {
   ok: boolean;
   msg: string;
 }
+
+export interface ForgotPassswordDto {
+  email: string;
+}
+
+export interface ForgotPasswordDtoResponse {
+  ok: boolean;
+  msg: string;
+}

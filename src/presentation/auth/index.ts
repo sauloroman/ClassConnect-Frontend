@@ -7,9 +7,10 @@ export { AuthLogin } from './login/pages/AuthLogin'
 export { AuthRegister } from './register/pages/AuthRegister'
 export { AuthValidateAccount } from './validate-account/pages/AuthValidateAccount'
 export { AuthValidateAccountMessage } from './validate-account/pages/AuthValidateAccountMessage'
-export { AuthForgotPassword } from './forgot-password/pages/AuthForgotPassword'
-export { AuthRecoverPassword } from './recover-password/pages/AuthRecoverPassword'
+export { AuthForgotPassword } from './password/pages/AuthForgotPassword'
+export { AuthChangePassword } from './password/pages/AuthChangePassword'
 
 // COMPONENTS
 export { ValidateAccountForm } from './validate-account/components/ValidateAccountForm'
 export { ValidateAccountTimer } from './validate-account/components/ValidateAccountTimer'
+export { PasswordFormEmail } from './password/components/PasswordFormEmail'

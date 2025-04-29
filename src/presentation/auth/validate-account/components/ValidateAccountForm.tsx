@@ -13,7 +13,7 @@ const { VITE_MESSAGE_TO_RESEND_VERIFICATION_CODE } = getEnvVariables()
 
 export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email }) => {
   
-  const { isLoading, validateAccount } = useAuth()
+  const { isLoading, validateAccount, resendVerificationCode } = useAuth()
   const { message } = useAlert()
 
   formData.email = email ?? ''  
@@ -24,7 +24,6 @@ export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email 
     formState,
     isFormValid,
     onInputChange,
-    onResetForm
   } = useForm(formData, formValidations )
 
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -41,7 +40,8 @@ export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email 
 
   const onResendValidationCode = ( e:React.FormEvent ) => {
     e.preventDefault()
-    
+    resendVerificationCode( email )
+    setResendCode( false )
   } 
 
   useEffect(() => {
@@ -80,9 +80,9 @@ export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email 
                 onClick={ onValidateAccount } 
                 disabled={ isLoading || resendCode } 
                 type='submit' 
-                className={`form-button__submit ${(isLoading || resendCode) && 'u-disabled'}`}
+                className={`btn btn--grad-1 u-w-100 ${(isLoading || resendCode) && 'u-disabled'}`}
               >Validar cuenta</button>
-               {resendCode && <button onClick={ onResendValidationCode } className='form-button__outlined'>Obtener código</button>}
+               {resendCode && <button onClick={ onResendValidationCode } className='btn btn--grad-2 u-w-100'>Obtener código</button>}
             </div>
           </form>
         )

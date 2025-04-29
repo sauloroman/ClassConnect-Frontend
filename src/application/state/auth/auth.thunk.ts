@@ -1,5 +1,10 @@
 import { Dispatch } from "@reduxjs/toolkit"
-import { LoginAccountDto, RegisterAccountDto, ValidateAccountDto } from "../../../domain/dto"
+import { 
+  LoginAccountDto, 
+  RegisterAccountDto, 
+  ValidateAccountDto, 
+  ForgotPassswordDto, 
+} from "../../../domain/dto"
 import { ClassConnectAPIAuthRepository } from "../../../infrastructure/repositories/auth.repository.imp"
 import { AuthService } from "../../service/auth.service"
 import { login, setIsLoadingAuth, setVerificationCodeEmailSent } from "./auth.slice"
@@ -61,7 +66,7 @@ export const startValidatingAccount = ( validateAccountDto: ValidateAccountDto )
       const data = await authService.validateAccount( validateAccountDto )
 
       localStorage.setItem('classconnectToken', data.token )
-      localStorage.removeItem('classconnectTempUser')
+      localStorage.removeItem('classconnectTempEmail')
 
       dispatch( showAlertSuccess( data.msg ) )
       dispatch( login( data ) )
@@ -111,6 +116,25 @@ export const startRenewingToken = () => {
     }
 
     dispatch( setIsLoadingAuth(false) )
+
+  }
+}
+
+export const startSendingEmailToRecoverPassword = ( forgotPassswordDto: ForgotPassswordDto ) => {
+  return async( dispatch: Dispatch ) => {
+
+    dispatch( setIsLoadingAuth(true) )
+
+    try {
+
+      const data = await authService.sendEmailForRecoverPassword( forgotPassswordDto )
+      dispatch(showAlertInfo( data.msg ))
+
+    } catch (error) {
+      dispatch( showAlertError( error as string ) )
+    }
+
+    dispatch( setIsLoadingAuth( false ) )
 
   }
 }
