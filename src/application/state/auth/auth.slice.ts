@@ -9,7 +9,7 @@ interface InitialStateAuth {
   error: string | null
   msg: string | null,
   verificationCodeSent: {
-    email: string
+    email: string | null,
   }
 }
 
@@ -20,7 +20,7 @@ const initialStateAuth: InitialStateAuth = {
   status: AuthStatus.UNAUTHENTICATED,
   user: null,
   verificationCodeSent: {
-    email: ''
+    email: null,
   }
 }
 
@@ -40,14 +40,15 @@ export const authSlice = createSlice({
       state.isLoading = payload
     },
 
-    setVerificationCodeEmailSent: ( state, { payload }: PayloadAction<string>) => {
+    setVerificationCodeEmailSent: ( state, { payload }: PayloadAction<string | null>) => {
       state.verificationCodeSent.email = payload
-    }
+    },
+
   }
 })
 
 export const {
   login,
   setIsLoadingAuth,
-  setVerificationCodeEmailSent
+  setVerificationCodeEmailSent,
 } = authSlice.actions

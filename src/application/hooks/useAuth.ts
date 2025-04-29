@@ -27,7 +27,7 @@ export const useAuth = () => {
 
   const renewToken = () => dispatch( startRenewingToken() )
 
-  const setTempEmail = ( email: string ) => dispatch( setVerificationCodeEmailSent( email ) )
+  const setTempEmail = ( email: string | null ) => dispatch( setVerificationCodeEmailSent( email ) )
 
   return {
     // Properties

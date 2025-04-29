@@ -17,9 +17,8 @@
 @use '../shared/components/loading-spinner/spinner';
 
 // auth
-@use '../auth/layout/auth-layout';
-@use '../auth/validate-account/validate-account';
-@use '../auth/forgot-password/forgot-password';
+@use '../auth/layout/register-account/auth-layout';
+@use '../auth/layout/validate-account/auth-validate-account-layout';
 
 // Utilities
 @use './base/utilities';

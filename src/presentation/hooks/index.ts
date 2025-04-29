@@ -1,3 +1,4 @@
 export * from './useForm'
 export * from './useValidatePasswords'
 export * from './useNavigatePage'
+export * from './useToken'

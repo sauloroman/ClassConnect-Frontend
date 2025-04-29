@@ -1,24 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from '../../../hooks'
-import { useAuth } from '../../../../application/hooks'
-import { formData, formValidations } from '../data/form.data'
+import { useAlert, useAuth } from '../../../../application/hooks'
+import { formData, formValidations } from '../data/validate-account-data'
 import { LoadingSpinner } from '../../../shared/components'
+import { getEnvVariables } from '../../../shared/helpers'
 
-export const ValidateAccountForm: React.FC = () => {
+interface ValidateAccountFormProps {
+  email: string
+}
+
+const { VITE_MESSAGE_TO_RESEND_VERIFICATION_CODE } = getEnvVariables()
+
+export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email }) => {
   
-<<<<<<< HEAD
-  const { 
-    temporalUser, 
-    isLoading, 
-    newValidationCode,
-    validateAccount,
-    resentValidationCode, 
-  } = useAuth()
-  formData.email = temporalUser?.email as string
-=======
-  const { isLoading, validateAccount, verificationCodeSent: { email }, resendVerificationCode } = useAuth()
-  formData.email = email 
->>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
+  const { isLoading, validateAccount } = useAuth()
+  const { message } = useAlert()
+
+  formData.email = email ?? ''  
 
   const { 
     code,
@@ -28,7 +26,9 @@ export const ValidateAccountForm: React.FC = () => {
     onInputChange,
     onResetForm
   } = useForm(formData, formValidations )
+
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [resendCode, setResendCode] = useState(false)
 
   const onValidateAccount = ( e: React.FormEvent ) => {
     e.preventDefault()
@@ -41,13 +41,14 @@ export const ValidateAccountForm: React.FC = () => {
 
   const onResendValidationCode = ( e:React.FormEvent ) => {
     e.preventDefault()
-<<<<<<< HEAD
-    resentValidationCode( temporalUser?.email! )
-    onResetForm()
-=======
-    resendVerificationCode( email )
->>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
+    
   } 
+
+  useEffect(() => {
+    if ( message === VITE_MESSAGE_TO_RESEND_VERIFICATION_CODE ) {
+      return setResendCode( true )
+    }
+  }, [message])
 
   return (
     <>
@@ -61,7 +62,7 @@ export const ValidateAccountForm: React.FC = () => {
                 name='code'
                 value={code}
                 onChange={ onInputChange }
-                placeholder='Ingresa tu código para verificar tu cuenta'
+                placeholder='Código'
                 id='code'
                 className='form__input' 
                 type="text"
@@ -77,16 +78,11 @@ export const ValidateAccountForm: React.FC = () => {
             <div className="form__buttons">
               <button
                 onClick={ onValidateAccount } 
-                // disabled={ isLoading || renewCode } 
+                disabled={ isLoading || resendCode } 
                 type='submit' 
-                // className={`form-button__submit ${(isLoading || renewCode) && 'u-disabled'}`}
+                className={`form-button__submit ${(isLoading || resendCode) && 'u-disabled'}`}
               >Validar cuenta</button>
-
-<<<<<<< HEAD
-              { newValidationCode && <button onClick={ onResendValidationCode } className='form-button__outlined'>Obtener código</button> }
-=======
-              {/* { renewCode && <button onClick={onResendValidationCode} className='form-button__outlined'>Obtener código</button> } */}
->>>>>>> dec80eaef13d2f62fe7914553f290288b282577f
+               {resendCode && <button onClick={ onResendValidationCode } className='form-button__outlined'>Obtener código</button>}
             </div>
           </form>
         )

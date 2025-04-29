@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Roles } from '../../../domain/entities';
-import { useAuth } from '../../../application/hooks';
+import { Roles } from '../../../../domain/entities';
+import { useAuth } from '../../../../application/hooks';
 
-import { useForm, useNavigatePage, useValidatePassword } from '../../hooks';
-import { AuthLayout } from '../layout/AuthLayout';
-import { InputPassword } from '../../shared/components';
-import { formData, formValidations } from './data/form-data';
+import { useForm, useNavigatePage, useValidatePassword } from '../../../hooks';
+import { InputPassword } from '../../../shared/components';
+import { formData, formValidations } from '../data/register-data';
+import { AuthLayout } from '../..';
 
 export const AuthRegister: React.FC = () => {
   const {

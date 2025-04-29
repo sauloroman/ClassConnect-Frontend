@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 
+let quantityMinutes = 2
+
 export const ValidateAccountTimer: React.FC = () => {
 
   const linkRef = useRef<HTMLAnchorElement>(null)
@@ -8,7 +10,7 @@ export const ValidateAccountTimer: React.FC = () => {
 
   const [expiryDate, setExpiryDate] = useState<Date>(() => {
     const time = new Date()
-    time.setSeconds( time.getSeconds() + 120 )
+    time.setSeconds( time.getSeconds() + quantityMinutes * 60 )
     return time
   })
 
@@ -22,8 +24,9 @@ export const ValidateAccountTimer: React.FC = () => {
     timerRef.current.classList.add('u-show')
     timerRef.current.classList.toggle('u-hidden')
 
+    quantityMinutes *= 2
     const newTime = new Date();
-    newTime.setSeconds(newTime.getSeconds() + 120 );
+    newTime.setSeconds(newTime.getSeconds() + quantityMinutes * 60 );
 
     setExpiryDate( newTime )
     restart( newTime )

@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
-import logo from '../../assets/img/logo-background-white.png';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../../application/hooks';
-import { LoadingSpinner } from '../../shared/components';
+import { LoadingSpinner } from '../../../shared/components';
+import { useAuth } from '../../../../application/hooks';
+import logo from '../../../assets/img/logo-background-white.png';
+
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -31,7 +32,12 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
     ? 'u-animate-moveToLeft'
     : 'u-animate-moveToRight'
   }, [pageName])
+
   const { isLoading } = useAuth()
+
+  useEffect(() => {
+    localStorage.removeItem('classconnectTempEmail')
+  }, [])
 
   return (
     <div className="auth-layout">

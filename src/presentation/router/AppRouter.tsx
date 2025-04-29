@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { AuthRouter } from './AuthRouter'
 import { useAuth } from '../../application/hooks'
 import { AuthStatus } from '../../domain/entities'
-import { ClassConnectRouter } from './ClassConnectRouter'
+import { ClassConnectRouter } from './ClassconnectRouter'
 
 export const AppRouter: React.FC = () => {
   

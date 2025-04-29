@@ -1,20 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { LoginAccountDto } from '../../../domain/dto'
-import { AuthLayout } from '../layout/AuthLayout'
-import { InputPassword } from '../../shared/components'
-import { FormValidations, useForm } from '../../hooks'
-import { useAuth } from '../../../application/hooks'
-
-const formData: LoginAccountDto = {
-  email: '',
-  password: '',
-}
-
-const formValidations: FormValidations<LoginAccountDto> = {
-  email: [ (value: string) => value.trim().length > 2, 'El correo es obligatorio'],
-  password: [ (value: string) => value.trim().length > 2, 'La contraseña es obligatoria']
-}
+import { InputPassword } from '../../../shared/components'
+import { useForm } from '../../../hooks'
+import { useAuth } from '../../../../application/hooks'
+import { AuthLayout } from '../..'
+import { formData, formValidations } from '../data/login-data'
 
 export const AuthLogin: React.FC = () => {
 

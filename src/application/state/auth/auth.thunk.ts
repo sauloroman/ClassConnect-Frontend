@@ -18,6 +18,7 @@ export const startRegisteringAccount = ( registerAccountDto: Partial<RegisterAcc
       const data = await authService.registerAccount( registerAccountDto )
       dispatch( showAlertSuccess( data.msg ) )
       dispatch( setVerificationCodeEmailSent( registerAccountDto.email! ) )
+      
       localStorage.setItem('classconnectTempEmail', JSON.stringify(registerAccountDto.email! ) )
 
     } catch (error) {
