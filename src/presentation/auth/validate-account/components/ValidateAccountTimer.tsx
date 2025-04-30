@@ -48,7 +48,7 @@ export const ValidateAccountTimer: React.FC = () => {
           Puedes volver mandar el correo en: <br />
           <span className='u-strong'>{minutes.toString().padStart(2, '0')}: {seconds.toString().padStart(2, '0')}</span>
         </p>
-        <a onClick={onResetTimer} ref={ linkRef } href="#" className="validate-account-message__no u-hidden">
+        <a onClick={onResetTimer} ref={ linkRef } href="#" className="validate-account__link u-hidden">
           Reenviar el correo
         </a>
       </div>

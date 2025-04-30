@@ -19,7 +19,7 @@ export const AuthPasswordLayout: React.FC<AuthPasswordLayoutProps> = ({
   return (
     <div className="auth-password">
       { showReturnButton && <button onClick={ returnPage } className='auth-password__return btn btn--grad-2'>&larr;</button>}
-      <div className="auth-password__container">
+      <div className="auth-password__container card">
         <div className="auth-password__logo">
           <LogoClassConnect />
         </div>
@@ -30,6 +30,7 @@ export const AuthPasswordLayout: React.FC<AuthPasswordLayoutProps> = ({
       <div className="auth-password__bottom" style={{ 
         backgroundColor: `${colorWave}`
       }}>
+        <p>Recupera tu contraseña</p>
         <p>ClassConnect</p>
       </div>
     </div>

@@ -42,7 +42,7 @@ export const authSlice = createSlice({
 
     setVerificationCodeEmailSent: ( state, { payload }: PayloadAction<string | null>) => {
       state.verificationCodeSent.email = payload
-    },
+    }
 
   }
 })

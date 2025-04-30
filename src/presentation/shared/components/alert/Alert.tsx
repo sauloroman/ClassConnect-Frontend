@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { AlertType } from '../../../../application/state/alert/alert.slice'
 import { useAlert } from '../../../../application/hooks'
 
@@ -25,6 +25,10 @@ export const Alert: React.FC = () => {
   const status = useMemo(() => {
     return showAlert ? 'alert--open' : 'alert--close'
   }, [ showAlert ])
+
+  useEffect(() => {
+    if ( showAlert ) setTimeout(() => closeAlert(), 3000 )
+  }, [showAlert])
 
   return (
     <div className={`alert ${status} alert--${type}`}>

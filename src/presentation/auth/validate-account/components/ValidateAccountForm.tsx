@@ -80,7 +80,7 @@ export const ValidateAccountForm: React.FC<ValidateAccountFormProps> = ({ email 
                 onClick={ onValidateAccount } 
                 disabled={ isLoading || resendCode } 
                 type='submit' 
-                className={`btn btn--grad-1 u-w-100 ${(isLoading || resendCode) && 'u-disabled'}`}
+                className={`btn btn--grad-3 u-w-100 ${(isLoading || resendCode) && 'u-disabled'}`}
               >Validar cuenta</button>
                {resendCode && <button onClick={ onResendValidationCode } className='btn btn--grad-2 u-w-100'>Obtener código</button>}
             </div>

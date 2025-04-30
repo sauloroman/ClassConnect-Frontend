@@ -24,7 +24,7 @@ export const AuthValidateAccountMessage: React.FC = () => {
         message='Para poder validar tu cuenta debes registrarte primero'
       >
         <div className="flex flex-center">
-          <button className='btn btn--grad-2' onClick={ () => navigateToPage('/auth/register') }>&larr; {' '} Registrar cuenta</button>
+          <button className='btn btn--grad-3' onClick={ () => navigateToPage('/auth/register') }> Registrar cuenta</button>
         </div>
       </AuthValidateAccountLayout>
     )

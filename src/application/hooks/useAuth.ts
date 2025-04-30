@@ -21,7 +21,13 @@ import { setVerificationCodeEmailSent } from "../state/auth/auth.slice"
 export const useAuth = () => {
 
   const dispatch = useDispatch<any>()
-  const { isLoading, msg, status, user, verificationCodeSent } = useSelector( (state: RootState) => state.auth )
+  const { 
+    isLoading, 
+    msg, 
+    status, 
+    user, 
+    verificationCodeSent,
+  } = useSelector( (state: RootState) => state.auth )
 
   const registerAccount = ( registerAccountDto: Partial<RegisterAccountDto> ) => {
     dispatch( startRegisteringAccount( registerAccountDto ) )
@@ -67,7 +73,7 @@ export const useAuth = () => {
     resendVerificationCode,
     setTempEmail,
     sendEmailToRecoverPassword,
-    changePasswordOfAccount
+    changePasswordOfAccount,
   }
 
 

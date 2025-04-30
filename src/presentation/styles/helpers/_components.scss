@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as v;
+
+.text-strong {
+  padding-top: 3rem;
+  font-weight: 900;
+  color: v.$color-pink;
+}
+
+.card {
+  background-color: v.$color-background;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .25);
+  border-radius: 10px;
+  border: 1px solid v.$border-color;
+  padding: v.$gutter;
+}
