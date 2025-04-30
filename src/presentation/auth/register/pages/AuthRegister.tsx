@@ -162,7 +162,7 @@ export const AuthRegister: React.FC = () => {
 
           </div>
           <div className="form__buttons">
-            <button disabled={ isLoading } type="submit" className="btn btn--grad-1 u-w-100">
+            <button disabled={ isLoading } type="submit" className="btn btn--grad-3 u-w-100">
               🚀 Registrar Cuenta
             </button>
           </div>

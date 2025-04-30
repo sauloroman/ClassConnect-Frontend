@@ -47,6 +47,8 @@
   &__forgot-password {
     cursor: pointer;
     transition: all .4s ease;
+    border-bottom: 2px solid v.$color-gray-dark-2;
+    padding-bottom: 1px;
   }
   
   &__forgot-password:hover {
@@ -68,7 +70,7 @@
     display: block;
     text-align: right;
     font-size: 1.2rem;
-    color: v.$color-orange;
+    color: v.$color-gray-dark-2;
 
     &--left {
       text-align: left;

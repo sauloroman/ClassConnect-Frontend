@@ -1,4 +1,3 @@
-import { ForgotPassswordDto, ForgotPasswordDtoResponse } from '../dto/auth.dto';
 import { 
   LoginAccountDto, 
   LoginAccountResponse,  
@@ -6,7 +5,11 @@ import {
   RegisterAccountResponse, 
   RenewTokenReponse, 
   ResendValidationCode, 
-  ValidateAccountDto
+  ValidateAccountDto,
+  ForgotPassswordDto,
+  ForgotPasswordDtoResponse,
+  ChangePasswordDto,
+  ChangePasswordDtoResponse
 } from '../dto/auth.dto'
 
 export abstract class AuthRepository {
@@ -16,4 +19,5 @@ export abstract class AuthRepository {
   abstract resenValidationCode( email: string ): Promise<ResendValidationCode>
   abstract renewToken(): Promise<RenewTokenReponse>
   abstract forgotPassword( forgotPassswordDto: ForgotPassswordDto ): Promise<ForgotPasswordDtoResponse>
+  abstract changePassword( changePasswordDto: ChangePasswordDto ): Promise<ChangePasswordDtoResponse>
 } 

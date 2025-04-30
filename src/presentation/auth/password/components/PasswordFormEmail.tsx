@@ -23,7 +23,7 @@ export const PasswordFormEmail: React.FC = () => {
   }
 
   return (
-    <form onSubmit={ onSendEmail } className="form u-w-80 u-mt-4">
+    <form onSubmit={ onSendEmail } className="form u-mt-4">
       <div className="form__field">
         <input
           name="email"
@@ -42,7 +42,7 @@ export const PasswordFormEmail: React.FC = () => {
         </span>
       </div>
       <div className="form__buttons u-mt-2">
-        <button type='submit' className="btn btn--grad-1 u-w-100">📨 Enviar email</button>
+        <button type='submit' className="btn btn--grad-3 u-w-100">📨 Enviar email</button>
       </div>
     </form>
   );

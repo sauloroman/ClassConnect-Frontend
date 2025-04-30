@@ -1,35 +1,36 @@
 import React from 'react';
-import { useNavigatePage } from '../../../hooks';
 import { LogoClassConnect } from '../../../shared/components';
+import { useNavigatePage } from '../../../hooks';
 
 interface AuthPasswordLayoutProps {
   children: React.ReactNode;
   showReturnButton?: boolean;
+  colorWave: string;
 }
 
 export const AuthPasswordLayout: React.FC<AuthPasswordLayoutProps> = ({
   children,
-  showReturnButton = true,
+  showReturnButton,
+  colorWave
 }) => {
-  const { returnPage } = useNavigatePage();
+
+  const { returnPage } = useNavigatePage()
 
   return (
     <div className="auth-password">
-      <div className="auth-password__grid">
+      { showReturnButton && <button onClick={ returnPage } className='auth-password__return btn btn--grad-2'>&larr;</button>}
+      <div className="auth-password__container">
+        <div className="auth-password__logo">
+          <LogoClassConnect />
+        </div>
         <div className="auth-password__content">
-          <header className="auth-password__header">
-            {showReturnButton && (
-              <button onClick={returnPage} className="btn btn--grad-2">
-                &larr;
-              </button>
-            )}
-            <LogoClassConnect />
-          </header>
-          {children}
+          { children }
         </div>
-        <div className="auth-password__banner">
-          <p className="auth-password__message">ClassConnect</p>
-        </div>
+      </div>
+      <div className="auth-password__bottom" style={{ 
+        backgroundColor: `${colorWave}`
+      }}>
+        <p>ClassConnect</p>
       </div>
     </div>
   );

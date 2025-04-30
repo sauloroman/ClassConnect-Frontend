@@ -4,9 +4,18 @@ import {
   LoginAccountDto, 
   RegisterAccountDto, 
   ValidateAccountDto, 
-  ForgotPassswordDto 
+  ForgotPassswordDto ,
+  ChangePasswordDto
 } from "../../domain/dto"
-import { startLoginingAccount, startRegisteringAccount, startRenewingToken, startResendingVerificationCode, startSendingEmailToRecoverPassword, startValidatingAccount } from "../state/auth/auth.thunk"
+import { 
+  startChangingPassword, 
+  startLoginingAccount, 
+  startRegisteringAccount, 
+  startRenewingToken, 
+  startResendingVerificationCode, 
+  startSendingEmailToRecoverPassword, 
+  startValidatingAccount 
+} from "../state/auth/auth.thunk"
 import { setVerificationCodeEmailSent } from "../state/auth/auth.slice"
 
 export const useAuth = () => {
@@ -38,6 +47,10 @@ export const useAuth = () => {
     dispatch( startSendingEmailToRecoverPassword( forgotPassswordDto ) )
   }
 
+  const changePasswordOfAccount = ( changePasswordDto: ChangePasswordDto ) => {
+    dispatch( startChangingPassword( changePasswordDto ) )
+  }
+
   return {
     // Properties
     isLoading,
@@ -53,7 +66,8 @@ export const useAuth = () => {
     renewToken,
     resendVerificationCode,
     setTempEmail,
-    sendEmailToRecoverPassword
+    sendEmailToRecoverPassword,
+    changePasswordOfAccount
   }
 
 

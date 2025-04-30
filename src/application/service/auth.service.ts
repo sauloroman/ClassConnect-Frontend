@@ -7,7 +7,9 @@ import {
   ResendValidationCode, 
   ValidateAccountDto,
   ForgotPassswordDto,
-  ForgotPasswordDtoResponse
+  ForgotPasswordDtoResponse,
+  ChangePasswordDto,
+  ChangePasswordDtoResponse
 } from "../../domain/dto";
 import { AuthRepository } from "../../domain/repositories";
 
@@ -80,6 +82,17 @@ export class AuthService {
     } catch (error: any) {
       console.log(error)
       const errorMessage = error.response?.data.error ?? 'No se pudo mandar el correo para recuperar contraseña'
+      throw errorMessage
+    }
+  }
+
+  async changePassword( changePasswordDto: ChangePasswordDto ): Promise<ChangePasswordDtoResponse> {
+    try {
+      const data = await this.authRepo.changePassword( changePasswordDto )
+      return data
+    } catch (error: any) {
+      console.log(error)
+      const errorMessage = error.response?.data.error ?? 'No es posible cambiar la contraseña por ahora'
       throw errorMessage
     }
   }

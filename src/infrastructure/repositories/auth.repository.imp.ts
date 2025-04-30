@@ -1,4 +1,6 @@
 import {
+  ChangePasswordDto,
+  ChangePasswordDtoResponse,
   ForgotPassswordDto,
   ForgotPasswordDtoResponse,
   LoginAccountDto,
@@ -59,6 +61,11 @@ export class ClassConnectAPIAuthRepository implements AuthRepository {
 
   async forgotPassword(forgotPassswordDto: ForgotPassswordDto): Promise<ForgotPasswordDtoResponse> {
     const {data} = await classconnectApiPublic.post('/auth/forgot-password', forgotPassswordDto )
+    return data
+  }
+
+  async changePassword(changePasswordDto: ChangePasswordDto): Promise<ChangePasswordDtoResponse> {
+    const { data } = await classconnectApiPublic.post('/auth/change-password', changePasswordDto )
     return data
   }
 

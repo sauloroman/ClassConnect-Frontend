@@ -11,11 +11,15 @@
   display: block;
 
   &--grad-1 {
-    background-image: linear-gradient(to right, #6441A5 0%, #2a0845  51%, #6441A5  100%)
+    background-image: linear-gradient(to right, #6441A5 0%, #2a0845  51%, #6441A5  100%);
   }
 
   &--grad-2 {
-    background-image: linear-gradient(to right, #485563 0%, #29323c  51%, #485563  100%)
+    background-image: linear-gradient(to right, #485563 0%, #29323c  51%, #485563  100%);
+  }
+
+  &--grad-3 {
+    background-image: linear-gradient(to right, #4568DC 0%, #B06AB3  51%, #4568DC  100%);
   }
 
   &:hover {

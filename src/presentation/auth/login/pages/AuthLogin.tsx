@@ -74,7 +74,7 @@ export const AuthLogin: React.FC = () => {
             <button 
               disabled={ isLoading } 
               type='submit' 
-              className='btn btn--grad-1 u-w-100'>🔐 Iniciar sesión</button>
+              className='btn btn--grad-3 u-w-100'>🔐 Iniciar sesión</button>
           </div>
         </form>
       </>

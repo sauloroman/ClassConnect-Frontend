@@ -52,3 +52,15 @@ export interface ForgotPasswordDtoResponse {
   ok: boolean;
   msg: string;
 }
+
+export interface ChangePasswordDto {
+  userEmail: string;
+  newPassword: string;
+}
+
+export interface ChangePasswordDtoResponse {
+  ok: boolean;
+  msg: string;
+  user: UserEntity;
+  token: string;
+}

@@ -47,6 +47,6 @@ ul, ol {
 }
 
 ::selection {
-  background-color: v.$color-secondary;
-  color: v.$color-gray-light-1;
+  background-color: v.$color-gray-dark;
+  color: v.$color-background;
 }

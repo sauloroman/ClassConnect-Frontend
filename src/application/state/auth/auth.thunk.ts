@@ -4,6 +4,7 @@ import {
   RegisterAccountDto, 
   ValidateAccountDto, 
   ForgotPassswordDto, 
+  ChangePasswordDto
 } from "../../../domain/dto"
 import { ClassConnectAPIAuthRepository } from "../../../infrastructure/repositories/auth.repository.imp"
 import { AuthService } from "../../service/auth.service"
@@ -130,6 +131,28 @@ export const startSendingEmailToRecoverPassword = ( forgotPassswordDto: ForgotPa
       const data = await authService.sendEmailForRecoverPassword( forgotPassswordDto )
       dispatch(showAlertInfo( data.msg ))
 
+    } catch (error) {
+      dispatch( showAlertError( error as string ) )
+    }
+
+    dispatch( setIsLoadingAuth( false ) )
+
+  }
+}
+
+export const startChangingPassword = ( changePasswordDto: ChangePasswordDto ) => {
+  return async( dispatch: Dispatch ) => {
+    
+    dispatch( setIsLoadingAuth(true) )
+
+    try {
+
+      const data = await authService.changePassword( changePasswordDto )
+
+      localStorage.setItem('classconnectToken', data.token )
+      dispatch(showAlertInfo( data.msg ))
+      dispatch(login(data))
+      
     } catch (error) {
       dispatch( showAlertError( error as string ) )
     }
