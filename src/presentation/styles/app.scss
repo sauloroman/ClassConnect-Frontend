@@ -19,10 +19,13 @@
 @use '../shared/components/loading-spinner/spinner';
 @use '../shared/components/logo/logo';
 
-// auth
+// Auth
 @use '../auth/layout/register-account/auth-layout';
 @use '../auth/layout/validate-account/auth-validate-account-layout';
 @use '../auth/layout/password/auth-password-layout';
+
+// ClassConnect
+@use '../classconnect/layout/classconnect';
 
 // Utilities
 @use './base/utilities';

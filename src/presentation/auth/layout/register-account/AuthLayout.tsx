@@ -43,7 +43,9 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
 
         <div className='auth-layout__content-box'>
           <section className={`auth-layout__content ${animationName}`}>
-            <LogoClassConnect />
+            <div className="u-mb-3">
+              <LogoClassConnect />
+            </div>
 
             <header className="auth-layout__header">
               <h1 className="heading-primary">

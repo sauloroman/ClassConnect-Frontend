@@ -1,10 +1,15 @@
 import React from 'react';
 import logoWhite from '../../../assets/img/logo-background-white.png'
 
-export const LogoClassConnect: React.FC = () => {
+interface LogoClassConnectProps {
+  width?: number
+}
+
+export const LogoClassConnect: React.FC<LogoClassConnectProps> = ({ width }) => {
   return (
     <div className="logo__box">
       <img
+        style={{ width }}
         className="logo__img"
         src={logoWhite}
         alt="ClassConnect Logo Bg white"

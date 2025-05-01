@@ -20,7 +20,7 @@ export const AuthPasswordLayout: React.FC<AuthPasswordLayoutProps> = ({
     <div className="auth-password">
       { showReturnButton && <button onClick={ returnPage } className='auth-password__return btn btn--grad-2'>&larr;</button>}
       <div className="auth-password__container card">
-        <div className="auth-password__logo">
+        <div className="auth-password__logo u-mb-3">
           <LogoClassConnect />
         </div>
         <div className="auth-password__content">

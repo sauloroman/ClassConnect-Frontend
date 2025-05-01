@@ -14,7 +14,7 @@ export const AuthValidateAccountLayout: React.FC<
   return (
     <div className="validate-account">
       <div className="validate-account__container card">
-        <div className="flex flex-center">
+        <div className="flex flex-center u-mb-3">
           <LogoClassConnect />
         </div>
         <h1 className='validate-account__title heading-secondary'>{ title }</h1>
