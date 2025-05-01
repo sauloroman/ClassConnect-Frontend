@@ -36,6 +36,13 @@ export const authSlice = createSlice({
       state.status = AuthStatus.AUTHENTICATED
     },
 
+    logout: ( state ) => {
+      state.error = null
+      state.msg = null
+      state.user = null
+      state.status = AuthStatus.UNAUTHENTICATED
+    },
+
     setIsLoadingAuth: ( state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload
     },
@@ -49,6 +56,7 @@ export const authSlice = createSlice({
 
 export const {
   login,
+  logout,
   setIsLoadingAuth,
   setVerificationCodeEmailSent,
 } = authSlice.actions

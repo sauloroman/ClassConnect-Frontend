@@ -1,8 +1,9 @@
 import React from 'react'
-import { useMenu } from '../../../../application/hooks'
+import { useAuth, useMenu } from '../../../../application/hooks'
 
 export const ClassConnectAccordenMenu: React.FC = () => {
 
+  const { logoutAccount } = useAuth()
   const { IsAccordeonMenuOpen, openAccordeonMenu, closeAccordeonMenu } = useMenu()
 
   const onHandleIcon = () => {
@@ -33,7 +34,7 @@ export const ClassConnectAccordenMenu: React.FC = () => {
           <i className='bx bx-cog classconnect-accordeon__menu-icon'></i>
           <p>Ajustes</p>
         </li>
-        <li className='classconnect-accordeon__item'>
+        <li onClick={ logoutAccount } className='classconnect-accordeon__item'>
           <i className='bx bx-log-out classconnect-accordeon__menu-icon'></i>
           <p>Salir</p>
         </li>

@@ -19,9 +19,7 @@ export const ClassConnectAsideMenuItem: React.FC<ClassConnectAsideMenuItemProps>
   return (
     <NavLink 
       to={`/${route}`} 
-      className={({ isActive }) => 
-        `classconnect-aside__item ${isActive && 'classconnect-aside__item--active'} ${isActive && !IsAsideMenuOpen && 'u-w-250'}`
-      }
+      className={({ isActive }) => `classconnect-aside__item ${isActive && 'classconnect-aside__item--active'}`}
     >
       <div className="classconnect-aside__content">
         <i className={`classconnect-aside__icon bx bx-${icon}`}></i>

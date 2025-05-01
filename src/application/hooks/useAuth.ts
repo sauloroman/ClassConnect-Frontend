@@ -16,7 +16,9 @@ import {
   startSendingEmailToRecoverPassword, 
   startValidatingAccount 
 } from "../state/auth/auth.thunk"
-import { setVerificationCodeEmailSent } from "../state/auth/auth.slice"
+import { logout, setVerificationCodeEmailSent } from "../state/auth/auth.slice"
+import { showAlertInfo } from "../state/alert/alert.slice"
+import { setAccordeonMenuStatus } from "../state/menu/menu.slice"
 
 export const useAuth = () => {
 
@@ -35,6 +37,13 @@ export const useAuth = () => {
 
   const loginAccount = ( loginAccountDto: LoginAccountDto ) => {
     dispatch( startLoginingAccount( loginAccountDto ) )
+  }
+
+  const logoutAccount = () => {
+    localStorage.removeItem('classconnectToken')
+    dispatch( logout() )
+    dispatch( showAlertInfo('Hasta pronto 👋') )
+    dispatch( setAccordeonMenuStatus(false) )
   }
 
   const validateAccount = ( validateAccountDto: ValidateAccountDto ) => {
@@ -67,6 +76,7 @@ export const useAuth = () => {
 
     // Methods
     loginAccount,
+    logoutAccount,
     registerAccount,
     validateAccount,
     renewToken,
