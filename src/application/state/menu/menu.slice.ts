@@ -7,7 +7,7 @@ interface InitialStateMenuSlice {
 
 export const initialState: InitialStateMenuSlice = {
   IsAccordeonMenuOpen: false,
-  IsAsideMenuOpen: false,
+  IsAsideMenuOpen: true,
 }
 
 export const menuSlice = createSlice({

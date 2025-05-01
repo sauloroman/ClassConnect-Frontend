@@ -1,7 +1,8 @@
 import React from 'react'
+import { ClassConnectLayout } from '../layout/ClassConnectLayout'
 
 export const CalendarPage: React.FC = () => {
   return (
-    <div>CalendarPage</div>
+    <ClassConnectLayout>CalendarPage</ClassConnectLayout>
   )
 }

@@ -4,12 +4,109 @@
 
 }
 
+.classconnect-aside {
+  position: fixed;
+  top: v.$header-height;
+  left: 0;
+  padding: 2rem;
+  height: 100vh;
+  border-right: 1px solid v.$border-color;
+  transition: all .4s ease;
+  width: v.$aside-menu-width;
+
+  &-small {
+    width: v.$aside-menu-width-small;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__item {
+    color: v.$color-text;
+    position: relative;
+    cursor: pointer;
+    padding: 1rem 0;
+  }
+
+  &__item--active {
+    border-radius: 100px;
+    background-color: v.$color-blue-ligth;
+    margin-left: -5rem;
+    font-weight: bold;
+    width: 110%;
+
+    div { margin-left: 5rem; }
+  }
+
+  &__item::before {
+    z-index: 1;
+    border-radius: 100px;
+    content: '';
+    display: inline-block;
+    width: 0%;
+    margin-left: -5rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: v.$color-blue-ligth;
+    transition: all .4s ease;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    z-index: 2;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__item:hover {
+    font-weight: bold;
+  }
+
+  &__item:hover::before {
+    width: 110%;
+  }
+
+  &__icon {
+    position: relative;
+    font-size: 2.4rem;
+  }
+
+  &__name {
+    position: relative;
+    line-height: 0;
+    font-size: 1.4rem;
+    color: v.$color-text;
+  }
+
+}
+
+.classconnect__children {
+  margin-top: calc( v.$header-height + 2rem);
+  margin-left: calc( v.$aside-menu-width + 3rem );
+  transition: all .4s ease;
+
+  &-small {
+    margin-left: calc( v.$aside-menu-width-small + 3rem );
+  }
+}
+
 .classconnect-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: v.$header-height;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid v.$border-color;
-  padding: .2rem 2.5rem;
+  padding: .2rem 2rem;
 
   &__left {
     display: flex;
@@ -30,6 +127,12 @@
     font-size: 3rem;
     transition: all .4s ease;
     cursor: pointer;
+    transition: all .4s ease;
+
+    &--rotate {
+      transform: rotate(-180deg);
+    }
+
   }
 
   &__icon:hover {

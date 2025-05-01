@@ -1,8 +1,8 @@
 import React from 'react'
 import { ClassConnectLayout } from '../layout/ClassConnectLayout'
 
-export const StatsPage: React.FC = () => {
+export const StudentsPage: React.FC = () => {
   return (
-    <ClassConnectLayout>StatsPage</ClassConnectLayout>
+    <ClassConnectLayout>StudentsPage</ClassConnectLayout>
   )
 }
