@@ -6,7 +6,7 @@ import { startCreatingClassroom, startGettingClassroomsOfUser } from "../state/c
 export const useClassroom = () => {
 
   const dispatch = useDispatch<any>()
-  const { classrooms } = useSelector( (state: RootState) => state.classrooms )
+  const { classrooms, isLoading } = useSelector( (state: RootState) => state.classrooms )
 
   const postClassroom = ( createClassroomDto: CreateClassroomDto ) => {
     dispatch( startCreatingClassroom(createClassroomDto) )
@@ -19,6 +19,7 @@ export const useClassroom = () => {
   return {
     // Attributes
     classrooms,
+    isLoadingClassrooms: isLoading,
 
     // Methods
     postClassroom,

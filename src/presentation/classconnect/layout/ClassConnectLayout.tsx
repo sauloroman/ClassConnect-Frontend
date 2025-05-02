@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassConnectAsideMenu, ClassConnectHeader } from '../'
+import { ClassConnectAsideMenu, ClassConnectHeader, ClassConnectNavigation } from '../'
 import { useMenu } from '../../../application/hooks'
 
 interface ClassConnectProps {

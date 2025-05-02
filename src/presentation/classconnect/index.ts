@@ -18,5 +18,10 @@ export { ClassConnectAsideMenuItem } from './layout/components/ClassConnectAside
 export { ClassConnectHeader } from './layout/components/ClassConnectHeader'
 export { ClassConnectInfoUser } from './layout/components/ClassConnectInfoUser'
 export { ClassConnectMenu } from './layout/components/ClassConnectMenu'
+export { ClassConnectNavigation } from './layout/components/ClassConnectNavigation'
+
 export { ClassroomsList } from './classrooms/components/ClassroomsList'
 export { ClassroomsItem } from './classrooms/components/ClassroomsItem'
+export { ClassroomsDefault } from './classrooms/components/ClassroomsDefault'
+export { ClassroomsFilters } from './classrooms/components/ClassroomsFilters'
+export { ClassroomsHeader } from './classrooms/components/ClassroomsHeader'

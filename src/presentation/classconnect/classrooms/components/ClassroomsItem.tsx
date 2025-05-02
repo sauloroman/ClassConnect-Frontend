@@ -29,14 +29,18 @@ export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
         <div className="classrooms__item-categories">
           {
             categories.map( (category) => (
-              <div className='classrooms__item-category'>{ category.categoryName }</div>
+              <div key={category.id} className='classrooms__item-category'>{ category.categoryName }</div>
             ))
           }
         </div>
       </div>
       <footer className="classrooms__item-footer">
-        <i className='bx bx-star classrooms__item-button'></i>
-        <i className='bx bx-folder classrooms__item-button'></i>
+        <button className='classrooms__item-button'>
+          <i className='bx bx-star classrooms__item-icon'></i>
+        </button>
+        <button className='classrooms__item-button'>
+          <i className='bx bx-folder classrooms__item-icon'></i>
+        </button>
       </footer>
     </li>
   )

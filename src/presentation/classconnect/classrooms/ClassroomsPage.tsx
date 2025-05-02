@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { ClassConnectLayout } from '../layout/ClassConnectLayout'
 import { useClassroom } from '../../../application/hooks'
-import { ClassroomsList } from '../'
+import { ClassConnectNavigation, ClassroomsDefault, ClassroomsList } from '../'
+import { LoadingSpinner } from '../../shared/components'
 
 export const ClassroomsPage: React.FC = () => {
 
-  const { getClassroomsByInstructorId } = useClassroom()
+  const { getClassroomsByInstructorId, isLoadingClassrooms, classrooms } = useClassroom()
 
   useEffect(() => {
     getClassroomsByInstructorId()
@@ -13,7 +14,19 @@ export const ClassroomsPage: React.FC = () => {
 
   return (
     <ClassConnectLayout>
-      <ClassroomsList />
+      <ClassConnectNavigation name='Clases Creadas' />
+      {
+        isLoadingClassrooms
+        ? (
+          <div className='u-h-90vh flex flex-center'><LoadingSpinner /></div>
+        )
+        : 
+        (
+          classrooms.length > 0
+          ? (<ClassroomsList />)
+          : (<ClassroomsDefault />)
+        )
+      }
     </ClassConnectLayout>
   )
 }

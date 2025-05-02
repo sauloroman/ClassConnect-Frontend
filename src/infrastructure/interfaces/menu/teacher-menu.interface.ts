@@ -3,7 +3,7 @@ import { MenuItemInterface } from "../../../domain/interfaces/menu.interface";
 export const teacherMenu: MenuItemInterface[] = [
   {
     icon: 'home-alt-2',
-    name: 'Aulas',
+    name: 'Clases',
     route: 'classrooms'
   },
   {
