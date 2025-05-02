@@ -18,7 +18,7 @@ export class ClassroomService {
       const data = await this.classroomRepo.createClassroom( createClassroomDto )
       return data
     } catch (error: any) {
-      const errorMessage = error.response?.data.error ?? 'No fue posible crear el aula'
+      const errorMessage = error.response?.data.error ?? 'No fue posible crear la clase'
       throw errorMessage
     }
   }
@@ -28,7 +28,17 @@ export class ClassroomService {
       const data = await this.classroomRepo.getClassroomByInstructorId( instructorId, page, limit )
       return data
     } catch (error: any) {
-      const errorMessage = error.respones?.data.error ?? 'No se pudieron obtener tus aulas'
+      const errorMessage = error.respones?.data.error ?? 'No se pudieron obtener tus clases'
+      return errorMessage
+    }
+  }
+
+  async getClassroomsCategories() {
+    try {
+      const data = await this.classroomRepo.getClassroomsCategories()
+      return data
+    } catch (error: any) {
+      const errorMessage = error.respones?.data.error ?? 'No se pudieron las categorias de las clases'
       return errorMessage
     }
   }

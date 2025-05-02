@@ -1,4 +1,5 @@
 import { ClassroomEntity } from "../entities";
+import { ClassroomCategoryEntity } from "../entities/classroom-category.entity";
 import { IPagination } from "../interfaces";
 
 export interface CreateClassroomDto {
@@ -18,3 +19,8 @@ export interface GetClassroomsOfInstructorReponse {
   meta: IPagination;
   items: ClassroomEntity[] | []
 }
+
+export interface GetClassroomsCategoriesResponse {
+  ok: boolean;
+  categories: ClassroomCategoryEntity[]
+} 

@@ -6,10 +6,16 @@ import { LoadingSpinner } from '../../shared/components'
 
 export const ClassroomsPage: React.FC = () => {
 
-  const { getClassroomsByInstructorId, isLoadingClassrooms, classrooms } = useClassroom()
+  const { 
+    getClassroomsByInstructorId, 
+    getClassroomsCategories,
+    isLoadingClassrooms, 
+    classrooms 
+  } = useClassroom()
 
   useEffect(() => {
     getClassroomsByInstructorId()
+    getClassroomsCategories()
   }, [])
 
   return (

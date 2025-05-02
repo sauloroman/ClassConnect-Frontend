@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ClassroomEntity } from "../../../domain/entities";
 import { IPagination } from "../../../domain/interfaces";
+import { ClassroomCategoryEntity } from "../../../domain/entities/classroom-category.entity";
 
 interface InitialStateClassrooms {
   isLoading: boolean;
   classrooms: ClassroomEntity[];
+  categories: ClassroomCategoryEntity[]
   pagination: IPagination
 }
 
 const initialState: InitialStateClassrooms = {
   isLoading: false,
   classrooms: [],
+  categories: [],
   pagination: {
     currentPage: 1,
     limit: 5,
@@ -38,6 +41,10 @@ export const classroomSlice = createSlice({
       state.classrooms = payload
     },
 
+    setClassroomsCategories: ( state, {payload}: PayloadAction<ClassroomCategoryEntity[] | []>) => {
+      state.categories = payload
+    },
+
     setPagination: ( state, { payload }: PayloadAction<IPagination>) => {
       state.pagination = payload
     }
@@ -49,5 +56,6 @@ export const {
   setIsLoadingClassrooms,
   addClassrooms,
   setClassrooms,
+  setClassroomsCategories,
   setPagination,
 } = classroomSlice.actions

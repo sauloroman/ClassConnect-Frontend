@@ -1,4 +1,4 @@
-import { CreateClassroomDto, CreateClassroomDtoResponse, GetClassroomsOfInstructorReponse } from "../../domain/dto/classrooms.dto";
+import { CreateClassroomDto, CreateClassroomDtoResponse, GetClassroomsCategoriesResponse, GetClassroomsOfInstructorReponse } from "../../domain/dto/classrooms.dto";
 import { ClassroomRepository } from "../../domain/repositories/classroom.repository";
 import { classconnectApiPrivate } from "../api/classconnect.api";
 
@@ -17,6 +17,11 @@ export class ClassConnectAPIClassroomRepository implements ClassroomRepository {
     const { data } = await classconnectApiPrivate.get<GetClassroomsOfInstructorReponse>(
       `/classrooms/instructor/${instructorId}?page=${page}&limit=${limit}`
     )
+    return data
+  }
+
+  async getClassroomsCategories(): Promise<GetClassroomsCategoriesResponse> {
+    const { data } = await classconnectApiPrivate.get<GetClassroomsCategoriesResponse>('/classrooms/categories')
     return data
   }
 

@@ -1,4 +1,4 @@
-import { CreateClassroomDto, CreateClassroomDtoResponse, GetClassroomsOfInstructorReponse } from '../dto/classrooms.dto';
+import { CreateClassroomDto, CreateClassroomDtoResponse, GetClassroomsCategoriesResponse, GetClassroomsOfInstructorReponse } from '../dto/classrooms.dto';
 
 export abstract class ClassroomRepository {
   abstract createClassroom( createClassroomDto: CreateClassroomDto ): Promise<CreateClassroomDtoResponse>
@@ -7,4 +7,5 @@ export abstract class ClassroomRepository {
     page: number,
     limit: number,
   ): Promise<GetClassroomsOfInstructorReponse>
+  abstract getClassroomsCategories(): Promise<GetClassroomsCategoriesResponse>
 }

@@ -1,6 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { CreateClassroomDto } from "../../../domain/dto/classrooms.dto";
-import { addClassrooms, setClassrooms, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
+import { addClassrooms, setClassrooms, setClassroomsCategories, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
 import { showAlertError, showAlertSuccess } from "../alert/alert.slice";
 import { ClassConnectAPIClassroomRepository } from "../../../infrastructure/repositories/classroom.repository.imp";
 import { ClassroomService } from "../../service/classroom.service";
@@ -56,5 +56,16 @@ export const startGettingClassroomsOfUser = () => {
 
     dispatch( setIsLoadingClassrooms(false) )
 
+  }
+}
+
+export const startGettingClassroomsCategories = () => {
+  return async ( dispatch: Dispatch ) => {   
+    try {
+      const {categories} = await classroomService.getClassroomsCategories()
+      dispatch( setClassroomsCategories( categories ) )
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
