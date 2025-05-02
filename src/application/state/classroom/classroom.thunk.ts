@@ -1,9 +1,10 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { CreateClassroomDto } from "../../../domain/dto/classrooms.dto";
-import { addClassrooms, setIsLoadingClassrooms } from "./classroom.slice";
+import { addClassrooms, setClassrooms, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
 import { showAlertError, showAlertSuccess } from "../alert/alert.slice";
 import { ClassConnectAPIClassroomRepository } from "../../../infrastructure/repositories/classroom.repository.imp";
 import { ClassroomService } from "../../service/classroom.service";
+import { RootState } from "../store";
 
 const classroomRepo = new ClassConnectAPIClassroomRepository()
 const classroomService = new ClassroomService({ classroomRepo })
@@ -26,6 +27,34 @@ export const startCreatingClassroom = ( createClassroomDto: CreateClassroomDto )
     }
 
     dispatch( setIsLoadingClassrooms( false ) )
+
+  }
+}
+
+export const startGettingClassroomsOfUser = () => {
+  return async( dispatch: Dispatch, getState: () => RootState ) => {
+
+    dispatch( setIsLoadingClassrooms(true) )
+
+    try {
+
+      const { auth: { user }, classrooms: { pagination }} = getState()
+
+      const data = await classroomService.getClassrooomsOfInstructorId( 
+        user?.id!, 
+        pagination.currentPage, 
+        pagination.limit 
+      )
+      
+      dispatch( setClassrooms(data.items) )
+      dispatch( setPagination(data.meta) )
+
+    } catch (error) {
+      console.log(error)
+      dispatch( showAlertError(error as string) )
+    }
+
+    dispatch( setIsLoadingClassrooms(false) )
 
   }
 }

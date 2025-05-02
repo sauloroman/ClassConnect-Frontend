@@ -23,4 +23,14 @@ export class ClassroomService {
     }
   }
 
+  async getClassrooomsOfInstructorId( instructorId: string, page: number, limit: number ) {
+    try {
+      const data = await this.classroomRepo.getClassroomByInstructorId( instructorId, page, limit )
+      return data
+    } catch (error: any) {
+      const errorMessage = error.respones?.data.error ?? 'No se pudieron obtener tus aulas'
+      return errorMessage
+    }
+  }
+
 }

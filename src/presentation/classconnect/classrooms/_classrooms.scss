@@ -1,0 +1,78 @@
+@use '../../styles/abstracts/variables' as v;
+@use '../../styles/abstracts/mixins' as m;
+
+.classrooms {
+
+  &__list {
+    @include m.grid(5, v.$gutter);
+  }
+
+  &__item {
+    border: 1px solid v.$border-color;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    overflow-y: hidden;
+    
+    &-cover {
+      height: 10rem;
+      background: #7474BF;
+      background: linear-gradient(
+        to right top,
+        #7474BF,#348AC7
+        );
+      position: relative;
+    }
+    
+    &-title {
+      position: absolute;
+      left: 7%;
+      top: 7%;
+      color: v.$color-background;
+    }
+
+    &-name {
+      font-size: 2rem;
+      font-weight: 300;
+    }
+
+    &-group, &-career {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    &-content {
+      padding: 2rem;
+      border-bottom: 1px solid v.$border-color;
+    }
+
+    &-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    &-category {
+      font-size: 1.2rem;
+      border: 1px solid v.$border-color;
+      padding: 0 .5rem;
+      border-radius: 100px;
+    }
+
+    &-category::first-letter {
+      text-transform: uppercase;
+    }
+
+    &-footer {
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.6rem;
+    }
+
+    &-button {
+      font-size: 1.8rem;
+    }
+
+  }
+
+}

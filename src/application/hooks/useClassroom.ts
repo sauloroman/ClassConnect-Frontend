@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
 import { CreateClassroomDto } from '../../domain/dto/classrooms.dto';
-import { startCreatingClassroom } from "../state/classroom/classroom.thunk";
+import { startCreatingClassroom, startGettingClassroomsOfUser } from "../state/classroom/classroom.thunk";
 
 export const useClassroom = () => {
 
@@ -12,12 +12,17 @@ export const useClassroom = () => {
     dispatch( startCreatingClassroom(createClassroomDto) )
   }
 
+  const getClassroomsByInstructorId = () => {
+    dispatch( startGettingClassroomsOfUser() )
+  }
+
   return {
     // Attributes
     classrooms,
 
     // Methods
     postClassroom,
+    getClassroomsByInstructorId,
   }
 
 }

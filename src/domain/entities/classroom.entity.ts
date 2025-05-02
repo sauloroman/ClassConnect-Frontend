@@ -1,7 +1,10 @@
+import { ClassroomCategoryEntity } from "./classroom-category.entity";
+
 export interface ClassroomEntity {
   id: string;
   title: string;
   group: string;
+  career: string;
   code: string;
   createdAt: Date;
   instructorId: string;
@@ -10,4 +13,5 @@ export interface ClassroomEntity {
   img: string | null;
   color: string | null;
   qrCode: string | null;
+  categories: ClassroomCategoryEntity[]
 }
