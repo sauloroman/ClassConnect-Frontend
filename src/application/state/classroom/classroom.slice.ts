@@ -19,7 +19,7 @@ const initialState: InitialStateClassrooms = {
   filterCategory: 'todos',
   pagination: {
     currentPage: 1,
-    limit: 10,
+    limit: 8,
     nextPage: null,
     prevPage: null,
     totalItems: 0,
@@ -48,6 +48,10 @@ export const classroomSlice = createSlice({
       state.pagination = payload
     },
 
+    setPage: ( state, { payload }: PayloadAction<number>) => {
+      state.pagination.currentPage = payload
+    },
+
     setFilterCategory: ( state, { payload }: PayloadAction<string>) => {
       state.filterCategory = payload
     }
@@ -60,5 +64,6 @@ export const {
   setClassrooms,
   setClassroomsCategories,
   setPagination,
+  setPage,
   setFilterCategory,
 } = classroomSlice.actions

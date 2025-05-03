@@ -17,6 +17,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .4s ease;
+
+    &--disabled {
+      display: none;
+    }
+
+    &:hover {
+      background-color: v.$color-gray-light-2;
+    }
   }
 
   &__icon {

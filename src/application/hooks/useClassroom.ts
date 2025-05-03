@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux"
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
 import { CreateClassroomDto } from '../../domain/dto/classrooms.dto';
 import { startCreatingClassroom, startGettingClassroomsCategories, startGettingClassroomsOfUser } from "../state/classroom/classroom.thunk";
-import { setFilterCategory, setPagination } from "../state/classroom/classroom.slice";
+import { setFilterCategory, setPage } from "../state/classroom/classroom.slice";
 
 export const useClassroom = () => {
 
   const dispatch = useDispatch<any>()
-  const { classrooms, isLoading, categories, filterCategory, pagination } = useSelector( (state: RootState) => state.classrooms )
+  const { classrooms, isLoading, categories, filterCategory, pagination } = useSelector( (state: RootState) => state.classrooms, shallowEqual )
 
   const postClassroom = ( createClassroomDto: CreateClassroomDto ) => {
     dispatch( startCreatingClassroom(createClassroomDto) )
@@ -23,10 +23,22 @@ export const useClassroom = () => {
 
   const setFilterClassroomsCategory = ( category: string ) => {
     dispatch( setFilterCategory( category ) )
+    dispatch(setPage(1))
+    dispatch(startGettingClassroomsOfUser())
   }
 
-  const setPage = ( page: number ) => {
-    
+  const onNextPage = () => {
+    const { nextPage } = pagination
+    if (!nextPage) return
+    dispatch(setPage(nextPage))
+    dispatch( startGettingClassroomsOfUser() )
+  }
+
+  const onPrevPage = () => {
+    const { prevPage } = pagination
+    if ( !prevPage ) return
+    dispatch(setPage(prevPage))
+    dispatch( startGettingClassroomsOfUser() )
   }
 
   return {
@@ -42,6 +54,8 @@ export const useClassroom = () => {
     getClassroomsByInstructorId,
     getClassroomsCategories,
     setFilterClassroomsCategory,
+    onNextPage,
+    onPrevPage,
   }
 
 }

@@ -16,12 +16,13 @@ export const ClassroomsPage: React.FC = () => {
     getClassroomsByInstructorId, 
     isLoadingClassrooms, 
     classrooms,
-    filterCategory
   } = useClassroom()
 
   useEffect(() => {
-    getClassroomsByInstructorId()
-  }, [ filterCategory ])
+    if (classrooms.length === 0) {
+      getClassroomsByInstructorId()
+    }
+  }, [])
 
   return (
     <ClassConnectLayout>
