@@ -82,7 +82,7 @@ export const ClassroomsCreateModal: React.FC = () => {
           </div>
           <div className="form__field">
             <ClassroomsCategoriesInput 
-              categoriesAdded={ categories } 
+              categoriesAdded={categories} 
               setCategories={setCategories} 
             />
             <span

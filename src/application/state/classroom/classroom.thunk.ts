@@ -1,6 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { CreateClassroomDto } from "../../../domain/dto/classrooms.dto";
-import { addClassrooms, setClassrooms, setClassroomsCategories, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
+import { setClassrooms, setClassroomsCategories, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
 import { showAlertError, showAlertSuccess } from "../alert/alert.slice";
 import { ClassConnectAPIClassroomRepository } from "../../../infrastructure/repositories/classroom.repository.imp";
 import { ClassroomService } from "../../service/classroom.service";
@@ -17,19 +17,11 @@ export const startCreatingClassroom = ( createClassroomDto: CreateClassroomDto )
     try {
 
       const data = await classroomService.createClassroom( createClassroomDto )
-      const { data: classroom, msg } = data
+      const { data: classrooms, msg } = data
+      const { items, meta } = classrooms
 
-      const categoriesWithFakeId = createClassroomDto.categories.map( category => {
-        return {
-          categoryName: category,
-          id: new Date().getTime().toString(),
-        }
-      }) 
-
-      dispatch( addClassrooms({ 
-        ...classroom, 
-        categories: categoriesWithFakeId
-      }))
+      dispatch( setClassrooms(items) )
+      dispatch( setPagination( meta ) )
       dispatch( showAlertSuccess( msg ) )
 
     } catch (error) {
@@ -48,12 +40,16 @@ export const startGettingClassroomsOfUser = () => {
 
     try {
 
-      const { auth: { user }, classrooms: { pagination }} = getState()
+      const { auth: { user }, classrooms: { pagination, filterCategory } } = getState()
+
+      const {categories} = await classroomService.getClassroomsCategories()
+      dispatch( setClassroomsCategories( categories ) )
 
       const data = await classroomService.getClassrooomsOfInstructorId( 
         user?.id!, 
         pagination.currentPage, 
-        pagination.limit 
+        pagination.limit,
+        filterCategory,
       )
       
       dispatch( setClassrooms(data.items) )

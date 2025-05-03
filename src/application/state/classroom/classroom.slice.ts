@@ -3,10 +3,12 @@ import { ClassroomEntity } from "../../../domain/entities";
 import { IPagination } from "../../../domain/interfaces";
 import { ClassroomCategoryEntity } from "../../../domain/entities/classroom-category.entity";
 
+
 interface InitialStateClassrooms {
   isLoading: boolean;
   classrooms: ClassroomEntity[];
   categories: ClassroomCategoryEntity[]
+  filterCategory: string,
   pagination: IPagination
 }
 
@@ -14,9 +16,10 @@ const initialState: InitialStateClassrooms = {
   isLoading: false,
   classrooms: [],
   categories: [],
+  filterCategory: 'todos',
   pagination: {
     currentPage: 1,
-    limit: 5,
+    limit: 10,
     nextPage: null,
     prevPage: null,
     totalItems: 0,
@@ -33,10 +36,6 @@ export const classroomSlice = createSlice({
       state.isLoading = payload
     },
 
-    addClassrooms: ( state, {payload}: PayloadAction<ClassroomEntity> ) => {
-      state.classrooms.unshift( payload )
-    },
-
     setClassrooms: ( state, {payload}: PayloadAction<ClassroomEntity[] | []>) => {
       state.classrooms = payload
     },
@@ -47,6 +46,10 @@ export const classroomSlice = createSlice({
 
     setPagination: ( state, { payload }: PayloadAction<IPagination>) => {
       state.pagination = payload
+    },
+
+    setFilterCategory: ( state, { payload }: PayloadAction<string>) => {
+      state.filterCategory = payload
     }
 
   }
@@ -54,8 +57,8 @@ export const classroomSlice = createSlice({
 
 export const {
   setIsLoadingClassrooms,
-  addClassrooms,
   setClassrooms,
   setClassroomsCategories,
   setPagination,
+  setFilterCategory,
 } = classroomSlice.actions

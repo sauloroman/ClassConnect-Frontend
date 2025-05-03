@@ -23,9 +23,10 @@ export class ClassroomService {
     }
   }
 
-  async getClassrooomsOfInstructorId( instructorId: string, page: number, limit: number ) {
+  async getClassrooomsOfInstructorId( instructorId: string, page: number, limit: number, category: string ) {
     try {
-      const data = await this.classroomRepo.getClassroomByInstructorId( instructorId, page, limit )
+      const categoryFilter = category === 'todos' ? '' : category
+      const data = await this.classroomRepo.getClassroomByInstructorId( instructorId, page, limit, categoryFilter )
       return data
     } catch (error: any) {
       const errorMessage = error.respones?.data.error ?? 'No se pudieron obtener tus clases'

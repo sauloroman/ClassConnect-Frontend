@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.pagination {
+  margin: 5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+
+  &__button {
+    border-radius: 5px;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: .5rem;
+    border: 1px solid v.$border-color;
+    background-color: v.$color-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    font-size: 2.4rem;
+  }
+
+  &__number {
+    font-weight: 900;
+    font-size: 1.6rem;
+  }
+
+}

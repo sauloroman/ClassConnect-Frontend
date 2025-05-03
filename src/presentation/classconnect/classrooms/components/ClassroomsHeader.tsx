@@ -13,7 +13,7 @@ export const ClassroomsHeader: React.FC = () => {
       <div className="classrooms-header__button">
         <button 
           onClick={ () => onOpenModal( ModalNames.createClassroom ) } 
-          className="btn btn--grad-3">
+          className="btn btn--grad-2">
         Crear Clase</button>
       </div>
     </header>

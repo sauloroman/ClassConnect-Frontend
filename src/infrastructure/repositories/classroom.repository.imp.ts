@@ -12,11 +12,14 @@ export class ClassConnectAPIClassroomRepository implements ClassroomRepository {
   async getClassroomByInstructorId(
     instructorId: string,
     page: number,
-    limit: number
+    limit: number,
+    category: string,
   ): Promise<GetClassroomsOfInstructorReponse> {
+
     const { data } = await classconnectApiPrivate.get<GetClassroomsOfInstructorReponse>(
-      `/classrooms/instructor/${instructorId}?page=${page}&limit=${limit}`
+      `/classrooms/instructor/${instructorId}?page=${page}&limit=${limit}&category=${category}`
     )
+    
     return data
   }
 

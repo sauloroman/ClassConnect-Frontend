@@ -9,17 +9,18 @@ export interface CreateClassroomDto {
   categories: string[];
 }
 
-export interface CreateClassroomDtoResponse {
-  ok: boolean;
-  msg: string;
-  data: ClassroomEntity;
-}
-
 export interface GetClassroomsOfInstructorReponse {
   ok: boolean;
   meta: IPagination;
   items: ClassroomEntity[] | []
 }
+
+export interface CreateClassroomDtoResponse {
+  ok: boolean;
+  msg: string;
+  data: GetClassroomsOfInstructorReponse;
+}
+
 
 export interface GetClassroomsCategoriesResponse {
   ok: boolean;

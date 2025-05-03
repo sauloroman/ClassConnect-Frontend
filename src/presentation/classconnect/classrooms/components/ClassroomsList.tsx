@@ -1,15 +1,12 @@
 import React from 'react'
 import { useClassroom } from '../../../../application/hooks'
-import { ClassroomsItem } from './ClassroomsItem'
-import { ClassroomsHeader } from './ClassroomsHeader'
+import { ClassroomsItem, ClassroomsPagination } from '../../'
 
 export const ClassroomsList: React.FC = () => {
-
   const { classrooms } = useClassroom()
 
   return (
     <>
-      <ClassroomsHeader />
       <ul className='classrooms__list'>
         {
           classrooms.map( classroom => (
@@ -17,6 +14,7 @@ export const ClassroomsList: React.FC = () => {
           ))
         }
       </ul>
+      <ClassroomsPagination />
     </>
   )
 }

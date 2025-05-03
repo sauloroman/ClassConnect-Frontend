@@ -6,6 +6,7 @@ export abstract class ClassroomRepository {
     instructorId: string ,
     page: number,
     limit: number,
+    category: string,
   ): Promise<GetClassroomsOfInstructorReponse>
   abstract getClassroomsCategories(): Promise<GetClassroomsCategoriesResponse>
 }

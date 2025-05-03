@@ -6,7 +6,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    width: 90%;
+    margin: 4rem 0;
+    width: 100%;
   }
 
   &__item {
@@ -18,16 +19,13 @@
     overflow-y: hidden;
 
     &-cover {
+      padding: 1.4rem;
       height: 10rem;
       background: #7474bf;
       background: linear-gradient(to right top, #7474bf, #348ac7);
-      position: relative;
     }
 
     &-title {
-      position: absolute;
-      left: 7%;
-      top: 7%;
       color: v.$color-background;
     }
 
@@ -88,7 +86,6 @@
 }
 
 .classrooms-default {
-
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -109,7 +106,6 @@
 
 .classrooms-header {
   width: 95%;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,9 +127,16 @@
     font-size: 1.2rem;
   }
 
-  &__item:hover {
+  &__item:hover, &__item--active {
     background-color: v.$color-pink;
     color: v.$color-background;
     font-weight: 700;
   }
+}
+
+.classrooms-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 95%;
 }

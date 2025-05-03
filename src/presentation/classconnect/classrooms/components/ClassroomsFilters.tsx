@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useClassroom } from '../../../../application/hooks'
 
 const categoryNameCapitalized = ( categoryName: string ): string => {
@@ -7,14 +7,21 @@ const categoryNameCapitalized = ( categoryName: string ): string => {
 
 export const ClassroomsFilters: React.FC = () => {
 
-  const { categories } = useClassroom()
+  const { categories, setFilterClassroomsCategory, filterCategory } = useClassroom()
 
   return (
     <ul className='classrooms-categories'>
-      <li className="classrooms-categories__item">Todos</li>
+      <li 
+        onClick={ () => setFilterClassroomsCategory('todos')}
+        className={`${ filterCategory === "todos" && 'classrooms-categories__item--active'} classrooms-categories__item`}>
+      Todos</li>
       {
         categories.map( ({categoryName, id}) => (
-          <li className='classrooms-categories__item' key={id}>
+          <li 
+            onClick={ () => setFilterClassroomsCategory( categoryName ) }
+            className={`${categoryName === filterCategory && 'classrooms-categories__item--active'} classrooms-categories__item`} 
+            key={id}
+          >
             {categoryNameCapitalized(categoryName)}
           </li>
         ))

@@ -5,6 +5,7 @@ import {
   ClassConnectNavigation, 
   ClassroomsDefault, 
   ClassroomsDisplayModals, 
+  ClassroomsHeader, 
   ClassroomsList 
 } from '../'
 import { LoadingSpinner } from '../../shared/components'
@@ -13,19 +14,19 @@ export const ClassroomsPage: React.FC = () => {
 
   const { 
     getClassroomsByInstructorId, 
-    getClassroomsCategories,
     isLoadingClassrooms, 
-    classrooms 
+    classrooms,
+    filterCategory
   } = useClassroom()
 
   useEffect(() => {
     getClassroomsByInstructorId()
-    getClassroomsCategories()
-  }, [])
+  }, [ filterCategory ])
 
   return (
     <ClassConnectLayout>
       <ClassConnectNavigation name='Clases Creadas' />
+      <ClassroomsHeader />
       {
         isLoadingClassrooms
         ? (
