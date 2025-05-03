@@ -27,6 +27,7 @@
 // ClassConnect
 @use '../classconnect/layout/classconnect';
 @use '../classconnect/classrooms/classrooms';
+@use '../shared/components/modal/modal';
 
 // Utilities
 @use './base/utilities';

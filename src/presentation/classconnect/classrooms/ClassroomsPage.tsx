@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import { ClassConnectLayout } from '../layout/ClassConnectLayout'
 import { useClassroom } from '../../../application/hooks'
-import { ClassConnectNavigation, ClassroomsDefault, ClassroomsList } from '../'
+import { 
+  ClassConnectNavigation, 
+  ClassroomsDefault, 
+  ClassroomsDisplayModals, 
+  ClassroomsList 
+} from '../'
 import { LoadingSpinner } from '../../shared/components'
 
 export const ClassroomsPage: React.FC = () => {
@@ -33,6 +38,8 @@ export const ClassroomsPage: React.FC = () => {
           : (<ClassroomsDefault />)
         )
       }
+
+      <ClassroomsDisplayModals />
     </ClassConnectLayout>
   )
 }

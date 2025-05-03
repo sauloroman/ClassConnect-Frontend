@@ -34,7 +34,7 @@ export const classroomSlice = createSlice({
     },
 
     addClassrooms: ( state, {payload}: PayloadAction<ClassroomEntity> ) => {
-      state.classrooms.push( payload )
+      state.classrooms.unshift( payload )
     },
 
     setClassrooms: ( state, {payload}: PayloadAction<ClassroomEntity[] | []>) => {

@@ -1,0 +1,54 @@
+@use '../../../styles/abstracts/variables' as v;
+@use '../../../styles/abstracts/mixins' as m;
+
+.modal {
+
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appear .8s ease;
+
+  &__container {
+    width: 55rem;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    padding: 2rem;
+    background-color: v.$color-background;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid v.$border-color;
+  }
+
+  &__icon {
+    font-size: 3.2rem;
+  }
+
+  &__button {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background .4s ease;
+    background-color: v.$color-background;
+  }
+
+  &__button:hover {
+    background-color: v.$color-gray-light-1;
+  }
+
+
+}

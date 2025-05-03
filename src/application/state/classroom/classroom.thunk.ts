@@ -19,7 +19,17 @@ export const startCreatingClassroom = ( createClassroomDto: CreateClassroomDto )
       const data = await classroomService.createClassroom( createClassroomDto )
       const { data: classroom, msg } = data
 
-      dispatch( addClassrooms( classroom ) )
+      const categoriesWithFakeId = createClassroomDto.categories.map( category => {
+        return {
+          categoryName: category,
+          id: new Date().getTime().toString(),
+        }
+      }) 
+
+      dispatch( addClassrooms({ 
+        ...classroom, 
+        categories: categoriesWithFakeId
+      }))
       dispatch( showAlertSuccess( msg ) )
 
     } catch (error) {

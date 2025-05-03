@@ -5,22 +5,25 @@ interface ClassroomItemProps {
   classroom: ClassroomEntity
 }
 
+export const formatText = ( text: string, length: number ): string => {
+  if ( text.length > length ) {
+    return text.substring(0, length) + '...'
+  }
+  return text
+}
+
 export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
 
   const { title, group, career, categories } = classroom
 
-  const formatCareer = useMemo(() => {
-    if ( career.length > 27 ) {
-      return career.substring(0, 27) + '...'
-    }
-    return career
-  },[ career ])
+  const formatTitle = useMemo(() => formatText(title, 18),[ title ])
+  const formatCareer = useMemo(() => formatText(career, 27),[ career ])
 
   return (
     <li key={classroom.id} className="classrooms__item">
       <header className="classrooms__item-cover">
         <div className="classrooms__item-title">
-          <p className="classrooms__item-name">{ title }</p>
+          <p className="classrooms__item-name">{ formatTitle }</p>
           <p className="classrooms__item-group">{ group }</p>
         </div>
       </header>
@@ -28,7 +31,7 @@ export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
         <p className="classrooms__item-career">{ formatCareer }</p>
         <div className="classrooms__item-categories">
           {
-            categories.map( (category) => (
+            categories?.map( (category) => (
               <div key={category.id} className='classrooms__item-category'>{ category.categoryName }</div>
             ))
           }
@@ -36,10 +39,10 @@ export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
       </div>
       <footer className="classrooms__item-footer">
         <button className='classrooms__item-button'>
-          <i className='bx bx-star classrooms__item-icon'></i>
+          <i className='bx bx-detail classrooms__item-icon'></i>
         </button>
         <button className='classrooms__item-button'>
-          <i className='bx bx-folder classrooms__item-icon'></i>
+          <i className='bx bx-down-arrow-alt classrooms__item-icon'></i>
         </button>
       </footer>
     </li>

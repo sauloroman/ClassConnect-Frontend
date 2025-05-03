@@ -4,6 +4,7 @@ import { IPagination } from "../interfaces";
 
 export interface CreateClassroomDto {
   title: string;
+  career: string;
   group: string;
   categories: string[];
 }
