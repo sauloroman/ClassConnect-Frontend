@@ -1,5 +1,6 @@
-export { useAuth } from './useAuth'
 export { useAlert } from './useAlert'
-export { useMenu } from './useMenu'
+export { useAuth } from './useAuth'
 export { useClassroom } from './useClassroom'
+export { useClassrooms } from './useClassrooms'
+export { useMenu } from './useMenu'
 export { useModal } from './useModal'

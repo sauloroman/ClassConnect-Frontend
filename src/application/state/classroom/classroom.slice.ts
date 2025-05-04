@@ -1,69 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ClassroomEntity } from "../../../domain/entities";
-import { IPagination } from "../../../domain/interfaces";
-import { ClassroomCategoryEntity } from "../../../domain/entities/classroom-category.entity";
 
+export const menuClassroom = ['general', 'trabajos', 'estudiantes', 'calificaciones']
 
-interface InitialStateClassrooms {
-  isLoading: boolean;
-  classrooms: ClassroomEntity[];
-  categories: ClassroomCategoryEntity[]
-  filterCategory: string,
-  pagination: IPagination
+interface InitialStateClassroom {
+  navPageClassroom: string,
+  classroom: ClassroomEntity | null,
 }
 
-const initialState: InitialStateClassrooms = {
-  isLoading: false,
-  classrooms: [],
-  categories: [],
-  filterCategory: 'todos',
-  pagination: {
-    currentPage: 1,
-    limit: 8,
-    nextPage: null,
-    prevPage: null,
-    totalItems: 0,
-    totalPages: 0
-  }
+const initialStateClassroom: InitialStateClassroom = {
+  classroom: null,
+  navPageClassroom: menuClassroom[0]
 }
 
 export const classroomSlice = createSlice({
-  name: 'classrooms',
-  initialState: initialState,
+  name: 'navigation',
+  initialState: initialStateClassroom,
   reducers: {
 
-    setIsLoadingClassrooms: ( state, {payload}: PayloadAction<boolean> ) => {
-      state.isLoading = payload
+    setNavPageClassroom: ( state, {payload}: PayloadAction<string>) => {
+      state.navPageClassroom = payload
     },
 
-    setClassrooms: ( state, {payload}: PayloadAction<ClassroomEntity[] | []>) => {
-      state.classrooms = payload
-    },
-
-    setClassroomsCategories: ( state, {payload}: PayloadAction<ClassroomCategoryEntity[] | []>) => {
-      state.categories = payload
-    },
-
-    setPagination: ( state, { payload }: PayloadAction<IPagination>) => {
-      state.pagination = payload
-    },
-
-    setPage: ( state, { payload }: PayloadAction<number>) => {
-      state.pagination.currentPage = payload
-    },
-
-    setFilterCategory: ( state, { payload }: PayloadAction<string>) => {
-      state.filterCategory = payload
+    setClassroom: ( state, { payload }: PayloadAction<ClassroomEntity> ) => {
+      state.classroom = payload
     }
 
   }
 })
 
 export const {
-  setIsLoadingClassrooms,
-  setClassrooms,
-  setClassroomsCategories,
-  setPagination,
-  setPage,
-  setFilterCategory,
+  setNavPageClassroom,
+  setClassroom,
 } = classroomSlice.actions
+

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { ClassConnectLayout } from '../layout/ClassConnectLayout'
-import { useClassroom } from '../../../application/hooks'
+import { useClassrooms } from '../../../application/hooks'
 import { 
   ClassConnectNavigation, 
   ClassroomsDefault, 
@@ -16,7 +16,7 @@ export const ClassroomsPage: React.FC = () => {
     getClassroomsByInstructorId, 
     isLoadingClassrooms, 
     classrooms,
-  } = useClassroom()
+  } = useClassrooms()
 
   useEffect(() => {
     if (classrooms.length === 0) {

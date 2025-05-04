@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal } from '../../../shared/components'
 import { useForm } from '../../../hooks'
 import { formData, formValidations } from '../data/create-classroom'
-import { useClassroom, useModal } from '../../../../application/hooks'
+import { useClassrooms, useModal } from '../../../../application/hooks'
 import { ClassroomsCategoriesInput } from '../../'
 
 export const ClassroomsCreateModal: React.FC = () => {
@@ -22,7 +22,7 @@ export const ClassroomsCreateModal: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [categories, setCategories] = useState<string[]>([])
   const { onCloseModal } = useModal()
-  const { postClassroom } = useClassroom()
+  const { postClassroom } = useClassrooms()
 
   const onCreateClassroom = (e: React.FormEvent) => {
     e.preventDefault()

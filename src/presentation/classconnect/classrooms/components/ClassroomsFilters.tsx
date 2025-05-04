@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useClassroom } from '../../../../application/hooks'
+import React from 'react'
+import { useClassrooms } from '../../../../application/hooks'
 
 const categoryNameCapitalized = ( categoryName: string ): string => {
   return categoryName.replace( categoryName[0], categoryName[0].toUpperCase() )
@@ -7,7 +7,7 @@ const categoryNameCapitalized = ( categoryName: string ): string => {
 
 export const ClassroomsFilters: React.FC = () => {
 
-  const { categories, setFilterClassroomsCategory, filterCategory } = useClassroom()
+  const { categories, setFilterClassroomsCategory, filterCategory } = useClassrooms()
 
   return (
     <ul className='classrooms-categories'>

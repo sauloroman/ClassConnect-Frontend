@@ -1,17 +1,19 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import { authSlice } from "./auth/auth.slice";
 import { alertSlice } from "./alert/alert.slice";
-import { menuSlice } from "./menu/menu.slice";
+import { authSlice } from "./auth/auth.slice";
 import { classroomSlice } from "./classroom/classroom.slice";
+import { classroomsSlice } from "./classrooms/classrooms.slice";
+import { menuSlice } from "./menu/menu.slice";
 import { modalSlice } from "./modal/modal.slice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
     alert: alertSlice.reducer,
-    classrooms: classroomSlice.reducer,
+    classrooms: classroomsSlice.reducer,
+    classroom: classroomSlice.reducer,
     menu: menuSlice.reducer,
-    modal: modalSlice.reducer
+    modal: modalSlice.reducer,
   }
 })
 

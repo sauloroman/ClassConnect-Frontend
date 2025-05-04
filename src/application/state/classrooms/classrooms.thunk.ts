@@ -1,6 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { CreateClassroomDto } from "../../../domain/dto/classrooms.dto";
-import { setClassrooms, setClassroomsCategories, setIsLoadingClassrooms, setPagination } from "./classroom.slice";
+import { setClassrooms, setClassroomsCategories, setIsLoadingClassrooms, setPagination } from "./classrooms.slice";
 import { showAlertError, showAlertSuccess } from "../alert/alert.slice";
 import { ClassConnectAPIClassroomRepository } from "../../../infrastructure/repositories/classroom.repository.imp";
 import { ClassroomService } from "../../service/classroom.service";

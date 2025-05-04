@@ -1,7 +1,13 @@
 import React from 'react'
+import { ClassConnectLayout } from '../layout/ClassConnectLayout'
+import { ClassroomHeader } from '../'
 
 export const ClassroomPage: React.FC = () => {
   return (
-    <div>ClassroomPage</div>
+    <ClassConnectLayout>
+      <div className="classroom">
+        <ClassroomHeader />
+      </div>
+    </ClassConnectLayout>
   )
 }

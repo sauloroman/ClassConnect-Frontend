@@ -1,5 +1,11 @@
 import { ClassroomCategoryEntity } from "./classroom-category.entity";
 
+interface InstructorClassroom {
+  id: string,
+  firstName: string,
+  lastName: string,
+}
+
 export interface ClassroomEntity {
   id: string;
   title: string;
@@ -7,7 +13,7 @@ export interface ClassroomEntity {
   career: string;
   code: string;
   createdAt: Date;
-  instructorId: string;
+  instructor: InstructorClassroom;
   updatedAt: Date | null;
   description: string | null;
   img: string | null;

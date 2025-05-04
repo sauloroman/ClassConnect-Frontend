@@ -1,0 +1,65 @@
+@use '../../styles/abstracts/variables' as v;
+@use '../../styles/abstracts/mixins' as m;
+
+.classroom {
+  width: 95%;
+}
+
+.classroom-header {
+  padding: 0 2rem;
+  width: calc( 100% - v.$aside-menu-width );
+  position: fixed;
+  left: v.$aside-menu-width;
+  top: v.$header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: v.$color-background;
+  border-bottom: 1px solid v.$border-color;
+
+  &__button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: v.$color-background;
+    transition: background .4s ease;
+
+    &:hover {
+      background-color: v.$color-gray-light-2;
+    }
+  }
+
+  &__icon {
+    font-size: 2.4rem;
+  }
+}
+
+.classroom-nav {
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+    width: 18rem;
+    height: 5.2rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background .4s ease;
+  }
+
+  &__item:hover {
+    font-weight: bold;
+    cursor: pointer;
+    background-color: v.$color-gray-light-1;
+  }
+
+  &__item--active {
+    border-bottom: 4px solid v.$color-pink;
+  }
+
+}

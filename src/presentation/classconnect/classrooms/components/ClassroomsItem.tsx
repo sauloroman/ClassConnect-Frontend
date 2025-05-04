@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { ClassroomEntity } from '../../../../domain/entities'
+import { useNavigatePage } from '../../../hooks'
 
 interface ClassroomItemProps {
   classroom: ClassroomEntity
@@ -14,14 +15,19 @@ export const formatText = ( text: string, length: number ): string => {
 
 export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
 
-  const { title, group, career, categories } = classroom
-
+  const { navigateToPage } = useNavigatePage()
+  const { title, group, career, categories, instructor } = classroom
   const formatTitle = useMemo(() => formatText(title, 18),[ title ])
+  const formatInstructor = useMemo(() => formatText(`${instructor.firstName} ${instructor.lastName}`, 20), [ instructor ])
   const formatCareer = useMemo(() => formatText(career, 27),[ career ])
+
+  const onNavigateToClassroom = () => {
+    navigateToPage(`/classroom/${ classroom.id }`)
+  }
 
   return (
     <li key={classroom.id} className="classrooms__item">
-      <header className="classrooms__item-cover">
+      <header onClick={onNavigateToClassroom} className="classrooms__item-cover">
         <div className="classrooms__item-title">
           <p className="classrooms__item-name">{ formatTitle }</p>
           <p className="classrooms__item-group">{ group }</p>
@@ -38,12 +44,15 @@ export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
         </div>
       </div>
       <footer className="classrooms__item-footer">
-        <button className='classrooms__item-button'>
-          <i className='bx bx-detail classrooms__item-icon'></i>
-        </button>
-        <button className='classrooms__item-button'>
-          <i className='bx bx-down-arrow-alt classrooms__item-icon'></i>
-        </button>
+        <p className='classrooms__item-instructor'>{formatInstructor}</p>
+        <div className='classrooms__item-buttons'>
+          <button className='classrooms__item-button'>
+            <i className='bx bx-star classrooms__item-icon'></i>
+          </button>
+          <button className='classrooms__item-button'>
+            <i className='bx bx-down-arrow-alt classrooms__item-icon'></i>
+          </button>
+        </div>
       </footer>
     </li>
   )

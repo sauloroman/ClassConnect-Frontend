@@ -1,5 +1,5 @@
 import React from 'react'
-import { useClassroom } from '../../../../application/hooks'
+import { useClassrooms } from '../../../../application/hooks'
 
 interface ClassroomsCategoriesInputProps {
   categoriesAdded: string[],
@@ -8,7 +8,7 @@ interface ClassroomsCategoriesInputProps {
 
 export const ClassroomsCategoriesInput: React.FC<ClassroomsCategoriesInputProps> = ({ categoriesAdded, setCategories }) => {
 
-  const { categories } = useClassroom()
+  const { categories } = useClassrooms()
 
   const onAddCategory = ( categoryName: string ) => {
     if ( categoriesAdded.includes( categoryName ) ) {

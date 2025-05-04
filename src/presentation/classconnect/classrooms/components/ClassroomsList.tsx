@@ -1,9 +1,9 @@
 import React from 'react'
-import { useClassroom } from '../../../../application/hooks'
+import { useClassrooms } from '../../../../application/hooks'
 import { ClassroomsItem, ClassroomsPagination } from '../../'
 
 export const ClassroomsList: React.FC = () => {
-  const { classrooms } = useClassroom()
+  const { classrooms } = useClassrooms()
 
   return (
     <>

@@ -29,3 +29,7 @@ export { ClassroomsCreateModal } from './classrooms/components/ClassroomsCreateM
 export { ClassroomsDisplayModals } from './classrooms/components/ClassroomsDisplayModals'
 export { ClassroomsCategoriesInput } from './classrooms/components/ClassroomsCategoriesInput'
 export { ClassroomsPagination } from './classrooms/components/ClassroomsPagination'
+
+export { ClassroomHeader } from './classroom/components/ClassroomHeader'
+export { ClassroomNavigation } from './classroom/components/ClassroomNavigation'
+export { ClassroomNavigationItem } from './classroom/components/ClassroomNavigationItem'

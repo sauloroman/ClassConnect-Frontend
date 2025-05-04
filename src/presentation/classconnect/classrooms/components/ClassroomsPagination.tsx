@@ -1,9 +1,9 @@
 import React from 'react'
-import { useClassroom } from '../../../../application/hooks'
+import { useClassrooms } from '../../../../application/hooks'
 
 export const ClassroomsPagination: React.FC = () => {
 
-  const { paginationClassrooms, onNextPage, onPrevPage } = useClassroom()
+  const { paginationClassrooms, onNextPage, onPrevPage } = useClassrooms()
   const { nextPage, prevPage, currentPage, totalPages } = paginationClassrooms
 
   return (
