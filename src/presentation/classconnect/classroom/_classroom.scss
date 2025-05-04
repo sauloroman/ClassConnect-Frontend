@@ -5,6 +5,10 @@
   width: 95%;
 }
 
+.classroom-small {
+  width: calc( 100% - v.$aside-menu-width-small );
+}
+
 .classroom-header {
   padding: 0 2rem;
   width: calc( 100% - v.$aside-menu-width );
@@ -16,6 +20,12 @@
   align-items: center;
   background-color: v.$color-background;
   border-bottom: 1px solid v.$border-color;
+  transition: width .1s ease;
+
+  &--small {
+    width: calc( 100% - v.$aside-menu-width-small );
+    left: v.$aside-menu-width-small;
+  }
 
   &__button {
     width: 4rem;
@@ -59,7 +69,11 @@
   }
 
   &__item--active {
-    border-bottom: 4px solid v.$color-pink;
+    border-bottom: 5px solid v.$color-pink;
   }
 
+}
+
+.classroom-view {
+  padding-top: 7rem;
 }

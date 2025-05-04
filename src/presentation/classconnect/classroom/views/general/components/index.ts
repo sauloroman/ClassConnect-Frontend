@@ -1,0 +1,5 @@
+export { GeneralAnnouncement } from './GeneralAnnouncement'
+export { GeneralCover } from './GeneralCover'
+export { GeneralInfo } from './GeneralInfo'
+export { GeneralCodeClassroom } from './GeneralCodeClassroom'
+export { GeneralModalDetailsClassroom } from './GeneralModalDetailsClassroom'

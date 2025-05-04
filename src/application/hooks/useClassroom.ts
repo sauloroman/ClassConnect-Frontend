@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../state/store"
-import { setNavPageClassroom } from "../state/classroom/classroom.slice"
+import { setClassroom, setNavPageClassroom } from "../state/classroom/classroom.slice"
+import { ClassroomEntity } from "../../domain/entities"
 
 export const useClassroom = () => {
  
@@ -11,11 +12,16 @@ export const useClassroom = () => {
     dispatch( setNavPageClassroom( namePage ) )
   }
 
+  const setClassroomPage = ( classroom: ClassroomEntity ) => {
+    dispatch( setClassroom(classroom) )
+  }
+
   return {
     classroom,
     navPageClassroom,
 
     onNavPageClassroom,
+    setClassroomPage,
   }
 
 }

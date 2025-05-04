@@ -29,7 +29,8 @@
 @use '../classconnect/layout/classconnect';
 @use '../classconnect/classrooms/classrooms';
 @use '../classconnect/classroom/classroom';
-@use '../shared/components/modal/modal';
+@use '../classconnect/classroom/views/general/general';
 
+@use '../shared/components/modal/modal';
 // Utilities
 @use './base/utilities';

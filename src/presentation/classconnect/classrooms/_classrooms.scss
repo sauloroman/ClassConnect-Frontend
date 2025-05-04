@@ -22,8 +22,8 @@
       cursor: pointer;
       padding: 1.4rem;
       height: 10rem;
-      background: #7474bf;
-      background: linear-gradient(to right top, #7474bf, #348ac7);
+      background: v.$bg-gradient-default;
+      background: v.$gradient;
     }
     
     &-title {

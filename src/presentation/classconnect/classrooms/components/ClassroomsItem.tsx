@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { ClassroomEntity } from '../../../../domain/entities'
 import { useNavigatePage } from '../../../hooks'
+import { useClassroom } from '../../../../application/hooks'
 
 interface ClassroomItemProps {
   classroom: ClassroomEntity
@@ -15,6 +16,7 @@ export const formatText = ( text: string, length: number ): string => {
 
 export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
 
+  const { setClassroomPage } = useClassroom()
   const { navigateToPage } = useNavigatePage()
   const { title, group, career, categories, instructor } = classroom
   const formatTitle = useMemo(() => formatText(title, 18),[ title ])
@@ -23,6 +25,7 @@ export const ClassroomsItem: React.FC<ClassroomItemProps> = ({ classroom }) => {
 
   const onNavigateToClassroom = () => {
     navigateToPage(`/classroom/${ classroom.id }`)
+    setClassroomPage( classroom )
   }
 
   return (

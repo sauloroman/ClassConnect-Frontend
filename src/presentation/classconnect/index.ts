@@ -33,3 +33,5 @@ export { ClassroomsPagination } from './classrooms/components/ClassroomsPaginati
 export { ClassroomHeader } from './classroom/components/ClassroomHeader'
 export { ClassroomNavigation } from './classroom/components/ClassroomNavigation'
 export { ClassroomNavigationItem } from './classroom/components/ClassroomNavigationItem'
+export { ClassroomView } from './classroom/components/ClassroomView'
+export { ClassroomDisplayModal } from './classroom/components/ClassroomDisplayModal'

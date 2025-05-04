@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export enum ModalNames {
   noModal = 'noModal',
-  createClassroom = 'createClassroom'
+  createClassroom = 'createClassroom',
+  showClassroomDetails = 'showClassroomDetails'
 }
 
 interface InitialStateModal {
