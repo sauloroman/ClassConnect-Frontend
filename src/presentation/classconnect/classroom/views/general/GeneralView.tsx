@@ -5,7 +5,7 @@ import { useClassroom } from '../../../../../application/hooks'
 export const GeneralView: React.FC = () => {
 
   const { classroom } = useClassroom()
-  const { img, title, career, code, description, group } = classroom!
+  const { img, title, career, code, categories, instructor } = classroom!
 
   return (
     <div className='general'>
@@ -13,7 +13,11 @@ export const GeneralView: React.FC = () => {
       <div className="general__grid">
         <div className='general__details'>
           <GeneralCodeClassroom code={code} />
-          <GeneralInfo title={ title } />
+          <GeneralInfo 
+            name={`${instructor.firstName} ${instructor.lastName}`}
+            title={ title } 
+            categories={categories} 
+          />
         </div>
         <GeneralAnnouncement />
       </div>

@@ -1,10 +1,11 @@
 import React from 'react'
 import { ClassConnectLayout } from '../layout/ClassConnectLayout'
 import { ClassroomDisplayModal, ClassroomHeader, ClassroomView } from '../'
-import { useMenu } from '../../../application/hooks'
+import { useMenu, useModal } from '../../../application/hooks'
 
 export const ClassroomPage: React.FC = () => {
   const { IsAsideMenuOpen } = useMenu()
+  const { isModalOpen } = useModal()
 
   return (
     <ClassConnectLayout>
@@ -15,7 +16,7 @@ export const ClassroomPage: React.FC = () => {
           <ClassroomView />
         </div>
 
-        <ClassroomDisplayModal />
+        { isModalOpen && <ClassroomDisplayModal />}
       </div>
     </ClassConnectLayout>
   )

@@ -4,15 +4,16 @@ import { useModal } from '../../../../application/hooks'
 
 interface ModalProps {
   children: React.ReactNode
+  width?: number,
 }
 
-export const Modal: React.FC<ModalProps> = ({ children }) => {
+export const Modal: React.FC<ModalProps> = ({ children, width }) => {
 
   const { onCloseModal } = useModal()
 
   return (
     <div className='modal'>
-      <div className="modal__container">
+      <div style={{ width: `${width}rem`}} className="modal__container">
         <header className="modal__header">
           <LogoClassConnect width={40} />
           <button onClick={ onCloseModal } className='modal__button'>
