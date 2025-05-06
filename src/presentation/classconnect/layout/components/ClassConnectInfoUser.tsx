@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { useAuth } from '../../../../application/hooks'
 import { Roles } from '../../../../domain/entities'
+import { ClassConnectPhotoUser } from './ClassConnectPhotoUser';
 
 export const ClassConnectInfoUser: React.FC = () => {
 
@@ -21,11 +22,10 @@ export const ClassConnectInfoUser: React.FC = () => {
         <p className="classconnect-user__name">{ user?.firstName } { user?.lastName }</p>
       </div>
       <div className="classconnect-user__image">
-        {
-          user?.avatarUrl
-          ?  <img className='classconnect-user__photo' src={user?.avatarUrl} alt="Imagen del usuario" />
-          : <p className='classconnect-user__initial'>{ user?.firstName[0] }</p>
-        }
+        <ClassConnectPhotoUser 
+          firstName={ user?.firstName! }
+          image={ user?.avatarUrl! }
+        />
       </div>
     </div>
   )

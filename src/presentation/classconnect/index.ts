@@ -19,6 +19,7 @@ export { ClassConnectHeader } from './layout/components/ClassConnectHeader'
 export { ClassConnectInfoUser } from './layout/components/ClassConnectInfoUser'
 export { ClassConnectMenu } from './layout/components/ClassConnectMenu'
 export { ClassConnectNavigation } from './layout/components/ClassConnectNavigation'
+export { ClassConnectPhotoUser } from './layout/components/ClassConnectPhotoUser'
 
 export { ClassroomsList } from './classrooms/components/ClassroomsList'
 export { ClassroomsItem } from './classrooms/components/ClassroomsItem'
